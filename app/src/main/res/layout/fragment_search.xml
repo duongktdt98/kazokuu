@@ -80,41 +80,8 @@
             android:layout_marginTop="240dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <CheckBox
-                android:id="@+id/checkbox5"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="sinh viên"
-                />
-            <CheckBox
-                android:id="@+id/checkbox6"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="người có thu nhập ổn"
-                />
+            android:layout_height="wrap_content"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="300dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <CheckBox
-                android:id="@+id/checkbox7"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="phòng trọ"
-                />
-            <CheckBox
-                android:id="@+id/checkbox8"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="chung cư"
-                />
-
-        </LinearLayout>
     </RelativeLayout>
 
 </FrameLayout>
