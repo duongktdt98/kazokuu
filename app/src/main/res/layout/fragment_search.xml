@@ -1,14 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#DDDDDD"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitiesAndFragments.SearchFragment">
+    tools:context=".ActivitiesAndFragments.SearchFragment"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Đây là giao diện tìm kiếm"/>
+        >
+        <LinearLayout
+            android:background="#33FF99"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tìm theo giá"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkbox1"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="1 triệu - 1,5 triệu"
+                />
+            <CheckBox
+                android:id="@+id/checkbox2"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="1,5 triệu - 2,5 triệu"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="120dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkbox3"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="2,5 triệu - 3,5 triệu"
+                />
+            <CheckBox
+                android:id="@+id/checkbox4"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=" trên 3,5 triệu"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="180dp"
+            android:background="#33FF99"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tìm theo loại phòng"
+                android:textSize="20dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="240dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkbox5"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="sinh viên"
+                />
+            <CheckBox
+                android:id="@+id/checkbox6"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="người có thu nhập ổn"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="300dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkbox7"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="phòng trọ"
+                />
+            <CheckBox
+                android:id="@+id/checkbox8"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="chung cư"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>
