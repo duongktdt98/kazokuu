@@ -8,12 +8,12 @@
 
     <item
         android:id="@+id/navigation_chat"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_message_black_24dp"
         android:title="@string/title_chat" />
 
     <item
         android:id="@+id/navigation_location"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/ic_gps_fixed_black_24dp"
         android:title="@string/title_location" />
 
     <item

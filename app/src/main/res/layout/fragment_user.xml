@@ -16,6 +16,11 @@
         android:layout_height="wrap_content"
         android:background="@color/colorBG">
 
+        <TextView
+           android:gravity="center_horizontal"            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:text="Đăng nhập" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="35dp">
@@ -113,8 +118,6 @@
             android:orientation="vertical"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
-
-
             <Button
                 android:id="@+id/btn_login"
                 style="?android:attr/borderlessButtonStyle"
