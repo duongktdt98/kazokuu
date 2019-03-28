@@ -20,6 +20,7 @@ import com.dtd.tungduong.kazoku.R;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private long mBackPressed;
     public static SharedPreferences sPre;
     private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 
 }
