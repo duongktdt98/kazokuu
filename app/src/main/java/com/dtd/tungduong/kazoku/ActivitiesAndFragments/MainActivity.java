@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new LocationFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.navigation_user:
-                    fragment = new UserFragment();
+                case R.id.navigation_login:
+                    fragment = new LoginFragment();
                     loadFragment(fragment);
                     return true;
             }

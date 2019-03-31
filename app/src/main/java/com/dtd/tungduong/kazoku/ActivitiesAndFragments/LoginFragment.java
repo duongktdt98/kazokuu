@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import static com.dtd.tungduong.kazoku.Constants.Config.LOGIN_URL;
 
 @SuppressLint("ValidFragment")
-public class UserFragment extends Fragment {
+public class LoginFragment extends Fragment {
     String user;
     String pass;
     ArrayList<Account> arrayAccount;
@@ -74,9 +74,7 @@ public class UserFragment extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait...");
-        UserEditText = (EditText) view.findViewById(R.id.ed_email);
-        PassEditText = (EditText) view.findViewById(R.id.ed_password);
-        button = (Button) view.findViewById(R.id.btn_login);
+        AnhXa(view);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (UserEditText.getText().length() == 0 || PassEditText.getText().length() == 0) {
@@ -95,6 +93,11 @@ public class UserFragment extends Fragment {
         return view;
     }
 
+    private void AnhXa(View view){
+        UserEditText = (EditText) view.findViewById(R.id.ed_email);
+        PassEditText = (EditText) view.findViewById(R.id.ed_password);
+        button = (Button) view.findViewById(R.id.btn_login);
+    }
     private void GetData(final String url , final String username, final String password) {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         Log.d("requestQueue", requestQueue.toString());
@@ -112,8 +115,10 @@ public class UserFragment extends Fragment {
                         user = data.getString("ten_taikhoan");
                         int id = data.getInt("id");
                         pass = data.getString("matkhau");
-                        if( user.equals(username) & pass.equals(password)){
+                        if( user.equals(username) && pass.equals(password)){
                             Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(getContext(), MainActivity.class));
+                            getActivity().finish();
                             break;
                         } else {
                             Toast.makeText(getContext(), "Đăng nhập sai, mời đăng nhập lại", Toast.LENGTH_SHORT).show();
