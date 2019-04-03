@@ -1,18 +1,25 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
+import android.view.View;
 import android.view.Window;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     private ActionBar toolbar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -32,8 +40,15 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        initFragment();
         loadFragment(new SearchFragment());
+    }
 
+    private void initFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.frame_container,new SearchFragment());
+        ft.commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

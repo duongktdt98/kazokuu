@@ -1,14 +1,27 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.util.Range;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.dtd.tungduong.kazoku.R;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +32,11 @@ import com.dtd.tungduong.kazoku.R;
  * create an instance of this fragment.
  */
 public class SearchFragment extends Fragment {
+    Button btn;
+    TextView txt;
+    ImageView img;
+    RadioButton kv_hn,kv_h,kv_hcm;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,10 +80,62 @@ public class SearchFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        final View view = inflater.inflate(R.layout.fragment_search, container, false);
+
+        btn = view.findViewById(R.id.btn_search_kv);
+        txt= view.findViewById(R.id.tpg);
+        img=view.findViewById(R.id.img_tpgap);
+
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                LayoutInflater inflater = getLayoutInflater();
+                View dialogView = inflater.inflate(R.layout.khuvuc, null);
+                dialog.setView(dialogView);
+                kv_hn  = dialogView.findViewById(R.id.radio_hn);
+                kv_h   = dialogView.findViewById(R.id.radio_h);
+                kv_hcm = dialogView.findViewById(R.id.radio_hcm);
+                kv_hn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        btn.setText(kv_hn.getText());
+                    }
+                });
+                kv_h.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        btn.setText(kv_h.getText());
+                    }
+                });
+                kv_hcm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        btn.setText(kv_hcm.getText());
+                    }
+                });
+                dialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Log.e(TAG, "OK");
+                    }
+                });
+                dialog.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Log.e(TAG, "Cancle");
+                    }
+                });
+                dialog.show();
+            }
+        });
+
+        return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -74,7 +144,6 @@ public class SearchFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
-
 
 
     @Override
@@ -97,4 +166,5 @@ public class SearchFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }

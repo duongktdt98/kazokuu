@@ -11,7 +11,6 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -20,43 +19,204 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tìm theo giá"
+                android:text="Abc"
                 android:textSize="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:background="@drawable/btn_radius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="20dp"
+            android:background="@drawable/btn_radius"
             android:orientation="horizontal">
+
             <LinearLayout
 
-                android:background="@drawable/btn_khuvuc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btn_khuvuc"
                 android:orientation="horizontal">
+
                 <ImageView
-                    android:layout_marginTop="15dp"
-                        android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_gps_fixed_black_24dp" />
-                <Button
-                    android:id="@+id/btn_seach_kv"
-                    android:background="@drawable/btn_khuvuc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="khu vực"/>
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/ic_gps_fixed_black_24dp" />
+
+                <Button
+                    android:id="@+id/btn_search_kv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#CCCCCC"
+                    android:text="hà nội" />
+
             </LinearLayout>
 
             <EditText
-
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_radius"/>
+                android:background="@drawable/btn_radius"
+                android:gravity="center"
+                android:hint="nhập quận,huyện" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:background="#C0C0C0"
+            android:orientation="horizontal"
+
+            >
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="#C0C0C0"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingTop="5px">
+
+                <ImageView
+                    android:id="@+id/img_tpgap"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/tpn"
+                    android:src="@drawable/timgan" />
+
+                <TextView
+                    android:id="@+id/tpg"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Tìm phòng gấp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="#C0C0C0"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingTop="5px">
+
+                <ImageView
+                    android:id="@+id/img_tpgan"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/gn_lv"
+                    android:src="@drawable/timnha" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Tìm gần chỗ học và làm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="#C0C0C0"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingTop="5px">
+
+                <ImageView
+                    android:id="@+id/img_tpkcc"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/chungchu"
+                    android:src="@drawable/kcc" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="không chung chủ" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="#C0C0C0"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingTop="5px">
+
+                <ImageView
+
+                    android:id="@+id/img_add"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/addphong"
+                    android:src="@drawable/add" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Tìm phòng gấp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="250dp"
+            android:background="#DDDDDD"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/ho_bay_mau"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingTop="150dp"
+                    android:text="Hai Bà Trưng"
+                    android:textColor="#F8F8FF"
+                    android:textFontWeight="50dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/pt2"
+                android:orientation="vertical"
+                android:paddingLeft="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingTop="150dp"
+                    android:text="Đống Đa"
+                    android:textColor="#F8F8FF"
+                    android:textFontWeight="50dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
         </LinearLayout>
 
 

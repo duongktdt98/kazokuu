@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        android:background="#C0C0C0">
+        <RadioGroup
+            android:gravity="center"
+            android:id="@+id/radioGroup_diffLevel"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:layout_marginLeft="6dp"
+                android:id="@+id/radio_hn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="hà nội" />
+
+            <RadioButton
+                android:id="@+id/radio_h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Huế" />
+
+            <RadioButton
+                android:layout_marginLeft="3dp"
+                android:id="@+id/radio_hcm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="HCM" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
