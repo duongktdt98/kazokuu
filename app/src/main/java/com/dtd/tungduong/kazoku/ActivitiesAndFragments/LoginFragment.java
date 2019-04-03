@@ -2,7 +2,9 @@ package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
 
 import org.json.JSONArray;
@@ -28,9 +31,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static com.dtd.tungduong.kazoku.Constants.Config.LOGIN_URL;
+import static com.dtd.tungduong.kazoku.Constants.PreferenceClass.IS_LOGIN;
 
 @SuppressLint("ValidFragment")
 public class LoginFragment extends Fragment {
+    SharedPreferences sharedPreferences;
     String user;
     String pass;
     ArrayList<Account> arrayAccount;
@@ -75,6 +80,7 @@ public class LoginFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait...");
         AnhXa(view);
+        sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (UserEditText.getText().length() == 0 || PassEditText.getText().length() == 0) {
@@ -117,9 +123,12 @@ public class LoginFragment extends Fragment {
                         pass = data.getString("matkhau");
                         if( user.equals(username) && pass.equals(password)){
                             Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("taikhoan", username);
+                            editor.putString("matkhau", username);
+                            editor.putBoolean(PreferenceClass.IS_LOGIN , true);
                             startActivity(new Intent(getContext(), MainActivity.class));
                             getActivity().finish();
-                            break;
                         } else {
                             Toast.makeText(getContext(), "Đăng nhập sai, mời đăng nhập lại", Toast.LENGTH_SHORT).show();
                         }

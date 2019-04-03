@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_login:
-                    fragment = new LoginFragment();
+                    fragment = new UserAccount();
                     loadFragment(fragment);
                     return true;
             }
