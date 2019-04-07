@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,52 +25,21 @@ import com.android.volley.toolbox.Volley;
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import static com.dtd.tungduong.kazoku.Constants.Config.LOGIN_URL;
-import static com.dtd.tungduong.kazoku.Constants.PreferenceClass.IS_LOGIN;
 
 @SuppressLint("ValidFragment")
 public class LoginFragment extends Fragment {
     SharedPreferences sharedPreferences;
-    String user;
-    String pass;
-    ArrayList<Account> arrayAccount;
-    private int Status;
-    private static Object JsonArrayRequest = "";
     public ProgressDialog progressDialog;
-    EditText UserEditText;
-    EditText PassEditText;
+    EditText edtuser;
+    EditText edtpass;
+    TextView txsignup;
     Button button;
-
-    public class Account {
-        private int Id;
-        private String User;
-        private String Password;
-
-        public Account(int id, String user, String password) {
-            Id = id;
-            User = user;
-            Password = password;
-        }
-
-        public int getId() {
-            return Id;
-        }
-
-        public String getUser() {
-            return User;
-        }
-
-        public String getPassword() {
-            return Password;
-        }
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,29 +53,36 @@ public class LoginFragment extends Fragment {
         sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (UserEditText.getText().length() == 0 || PassEditText.getText().length() == 0) {
+                if (edtuser.getText().length() == 0 || edtpass.getText().length() == 0) {
                     Toast.makeText(getContext(), "Vui lòng điền đủ tài khoản và mật khẩu", Toast.LENGTH_SHORT).show();
                 } else {
-                    String email = UserEditText.getText().toString();
-                    String pass = PassEditText.getText().toString();
+                    String email = edtuser.getText().toString();
+                    String pass = edtpass.getText().toString();
                     GetData(LOGIN_URL, email, pass);
                 }
 
 
             }
         });
-
+        txsignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
 
         return view;
     }
 
     private void AnhXa(View view) {
-        UserEditText = (EditText) view.findViewById(R.id.ed_email);
-        PassEditText = (EditText) view.findViewById(R.id.ed_password);
+        txsignup = (TextView) view.findViewById(R.id.tv_signed_up_now);
+        edtuser = (EditText) view.findViewById(R.id.ed_email);
+        edtpass = (EditText) view.findViewById(R.id.ed_password);
         button = (Button) view.findViewById(R.id.btn_login);
     }
 
     private void GetData(final String url, final String username, final String password) {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Please wait...");
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         Log.d("requestQueue", requestQueue.toString());
         JSONObject jsonObject = new JSONObject();
@@ -132,6 +109,7 @@ public class LoginFragment extends Fragment {
                         editor.putString("taikhoan", username);
                         editor.putString("matkhau", username);
                         editor.putBoolean(PreferenceClass.IS_LOGIN, true);
+                        editor.commit();
                         startActivity(new Intent(getContext(), MainActivity.class));
                         getActivity().finish();
                     } else if (code_id == 201){
