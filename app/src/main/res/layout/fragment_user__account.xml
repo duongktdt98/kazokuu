@@ -1,14 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivitiesAndFragments.UserAccount">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/activity_user__account">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/account_div">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="Thông tin tài khoản"
+                android:textColor="@color/or_color_name"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorEditTextBG"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/user_log_in_div"
+            android:background="@color/colorBG"
+            android:layout_below="@+id/account_div">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:paddingRight="15dp"
+                android:background="@color/colorWhite"
+                android:id="@+id/user_name_div"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xin Chào Đặng Tùng Dương"
+                    android:id="@+id/user_name"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="normal"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_name"
+                    android:layout_marginTop="2dp"
+                    android:text="TP.Hà Nội"
+                    android:textColor="@color/or_color_name"
+                    android:textSize="10sp"
+
+                    />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:paddingRight="15dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorWhite"
+                android:id="@+id/payment_method_div"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phòng bạn cho thuê"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:id="@+id/payment_method"
+                    android:textColor="@color/colorBlack"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/payment_method"
+                    android:layout_marginTop="2dp"
+                    android:text="Kiểm tra thông tin phòng của bạn cho thuê"
+                    android:textColor="@color/or_color_name"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="25dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:paddingRight="15dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorWhite"
+                android:id="@+id/dilervery_address_div"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phòng bạn đang thuê"
+                    android:id="@+id/delivery_address"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/delivery_address"
+                    android:layout_marginTop="2dp"
+                    android:text="Kiểm tra thông tin phòng bạn đang thuê"
+                    android:textColor="@color/or_color_name"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:paddingLeft="15dp"
+                android:layout_below="@+id/toolbar_sign_in"
+
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Thông tin khác"
+                    android:textColor="@color/or_color_name"
+                    android:textSize="10sp" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="1dp"
+                android:paddingRight="15dp"
+                android:background="@color/colorWhite"
+                android:id="@+id/terms_condition_div"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Điều khoản sử dụng và chính sách quyền riêng tư"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="1dp"
+                android:paddingRight="15dp"
+                android:background="@color/colorWhite"
+                android:id="@+id/change_password_div"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đổi mật khẩu"
+                    android:layout_centerVertical="true"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorBlack"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="1dp"
+                android:paddingRight="15dp"
+                android:background="@color/colorWhite"
+                android:id="@+id/hotline_div"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/uan_txt"
+                    android:layout_centerVertical="true"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorBlack"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="15dp"
+                android:layout_marginTop="1dp"
+                android:paddingRight="15dp"
+                android:background="@color/colorWhite"
+                android:id="@+id/log_out_div"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Đăng xuất"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
 
 </FrameLayout>

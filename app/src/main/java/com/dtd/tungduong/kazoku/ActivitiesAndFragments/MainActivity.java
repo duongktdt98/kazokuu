@@ -1,5 +1,6 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
@@ -7,23 +8,21 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
-import android.view.View;
 import android.view.Window;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
 
-public class MainActivity extends AppCompatActivity {
+import static com.dtd.tungduong.kazoku.Constants.PreferenceClass.IS_LOGIN;
 
+public class MainActivity extends AppCompatActivity {
     private long mBackPressed;
     public static SharedPreferences sPre;
     private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
@@ -53,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        SharedPreferences sharedPreferences;
+        SharedPreferences mSharedPreferences;
+
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -71,9 +73,18 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_login:
-                    fragment = new UserAccount();
-                    loadFragment(fragment);
-                    return true;
+                    mSharedPreferences = getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+                    boolean getLoginSession = mSharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, true);
+                    if (getLoginSession){
+                        fragment = new UserAccount();
+                        loadFragment(fragment);
+                        return true;
+                    } else {
+                        fragment = new LoginFragment();
+                        loadFragment(fragment);
+                        return true;
+                    }
+
             }
 
             return false;

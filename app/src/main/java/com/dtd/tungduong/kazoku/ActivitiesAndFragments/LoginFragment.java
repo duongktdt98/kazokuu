@@ -75,7 +75,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait...");
@@ -99,42 +99,47 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    private void AnhXa(View view){
+    private void AnhXa(View view) {
         UserEditText = (EditText) view.findViewById(R.id.ed_email);
         PassEditText = (EditText) view.findViewById(R.id.ed_password);
         button = (Button) view.findViewById(R.id.btn_login);
     }
-    private void GetData(final String url , final String username, final String password) {
+
+    private void GetData(final String url, final String username, final String password) {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         Log.d("requestQueue", requestQueue.toString());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("email", username);
+            jsonObject.put("password", password);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.d("jsonObj", jsonObject.toString());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                String json = null;
+                JSONObject jsonResponse = null;
+                String strJson = response.toString();
+                Log.d("response", response.toString());
                 try {
-                    String user;
-                    String pass;
-                    JSONArray events = response.getJSONArray("contacts");
-                    Log.d("events", events.toString());
-                    for (int i = 0; i < events.length(); i++) {
-                        JSONObject data = events.getJSONObject(i);
-                        user = data.getString("ten_taikhoan");
-                        int id = data.getInt("id");
-                        pass = data.getString("matkhau");
-                        if( user.equals(username) && pass.equals(password)){
-                            Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("taikhoan", username);
-                            editor.putString("matkhau", username);
-                            editor.putBoolean(PreferenceClass.IS_LOGIN , true);
-                            startActivity(new Intent(getContext(), MainActivity.class));
-                            getActivity().finish();
-                        } else {
-                            Toast.makeText(getContext(), "Đăng nhập sai, mời đăng nhập lại", Toast.LENGTH_SHORT).show();
-                        }
+                    jsonResponse = new JSONObject(strJson);
+                    int code_id = Integer.parseInt(jsonResponse.optString("code"));
+                    Log.d("code_id", code_id + "");
+                    if (code_id == 200) {
+                        Toast.makeText(getContext(), "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("taikhoan", username);
+                        editor.putString("matkhau", username);
+                        editor.putBoolean(PreferenceClass.IS_LOGIN, true);
+                        startActivity(new Intent(getContext(), MainActivity.class));
+                        getActivity().finish();
+                    } else if (code_id == 201){
+                        Toast.makeText(getContext(), "Tài khoản không tồn tại, mời đăng ký!", Toast.LENGTH_SHORT).show();
                     }
-
-
+                    else {
+                        Toast.makeText(getContext(), "Sai Mật khẩu!", Toast.LENGTH_SHORT).show();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
