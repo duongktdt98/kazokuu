@@ -27,7 +27,7 @@ public class UserAccount extends Fragment {
     TextView txthoten;
     SharedPreferences sharedPreferences;
     private RelativeLayout activity_user__account, fragment_not_login;
-    RelativeLayout div_log_out,hotline_div;
+    RelativeLayout div_log_out, hotline_div;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +56,7 @@ public class UserAccount extends Fragment {
         // checkLogInSession();
     }
 
-    public void Init(View view){
+    public void Init(View view) {
         hotline_div.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +64,8 @@ public class UserAccount extends Fragment {
             }
         });
     }
-    public void showDialog(){
+
+    public void showDialog() {
 
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
         builder1.setMessage("Gọi cho chúng tôi");
@@ -92,6 +93,7 @@ public class UserAccount extends Fragment {
         alert11.show();
 
     }
+
     public void onCall() {
         int permissionCheck = ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE);
 
@@ -103,9 +105,10 @@ public class UserAccount extends Fragment {
         } else {
 
 
-            startActivity(new Intent(Intent.ACTION_CALL).setData(Uri.parse("tel:"+getContext().getString(R.string.uan))));
+            startActivity(new Intent(Intent.ACTION_CALL).setData(Uri.parse("tel:" + getContext().getString(R.string.uan))));
         }
     }
+
     public void showDialogLogout() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
         builder1.setMessage("Bạn có chắc chắn muốn đăng xuất?");
@@ -116,13 +119,13 @@ public class UserAccount extends Fragment {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(PreferenceClass.pre_email, "");
-                        editor.putString(PreferenceClass.pre_pass, "");
-                        editor.putString(PreferenceClass.pre_first, "");
-                        editor.putString(PreferenceClass.pre_last, "");
-                        editor.putString(PreferenceClass.pre_contact, "");
-                        editor.putString(PreferenceClass.pre_user_id, "");
-                        editor.putString(PreferenceClass.ADMIN_USER_ID, "");
+                        editor.putString("taikhoan", "");
+                        editor.putString("matkhau", "");
+                        editor.putString("hoten", "");
+//                        editor.putString(PreferenceClass.pre_last, "");
+//                        editor.putString(PreferenceClass.pre_contact, "");
+//                        editor.putString(PreferenceClass.pre_user_id, "");
+//                        editor.putString(PreferenceClass.ADMIN_USER_ID, "");
                         editor.putBoolean(PreferenceClass.IS_LOGIN, false);
                         editor.commit();
 
@@ -146,19 +149,5 @@ public class UserAccount extends Fragment {
 
 
     }
-//    private void checkLogInSession() {
-//        boolean getLoINSession = sharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
-//        if (getLoINSession) {
-//            UserAccount fragmentChild = new UserAccount();
-//            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//            transaction.replace(R.id.frame_account, fragmentChild);
-//            transaction.commit();
-//        } else {
-//            LoginFragment fragmentChild = new LoginFragment();
-//            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//            transaction.replace(R.id.frame_login, fragmentChild);
-//            transaction.commit();
-//        }
-//
-//    }
+
 }
