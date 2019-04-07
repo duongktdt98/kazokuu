@@ -115,6 +115,7 @@
             android:orientation="vertical"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
+
             <Button
                 android:id="@+id/btn_login"
                 style="?android:attr/borderlessButtonStyle"
@@ -128,7 +129,6 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="13sp"
                 android:textStyle="normal" />
-
 
             <LinearLayout
                 android:layout_marginTop="10dp"
@@ -169,6 +169,11 @@
                 android:background="@drawable/or"
                 android:backgroundTint="@null" />
 
+            <ProgressBar
+                android:id="@+id/progressLoad"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <RelativeLayout
 
@@ -185,7 +190,6 @@
                     android:layout_centerInParent="true"
                     android:background="@null"
                     android:fontFamily="@font/verdana"
-                    android:onClick="onClick"
                     android:text="ĐĂNG NHẬP VỚI FACEBOOK"
                     android:textAllCaps="false"
                     android:textColor="#ffffff"

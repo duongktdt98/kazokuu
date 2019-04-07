@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,15 +43,13 @@ public class LoginFragment extends Fragment {
     EditText edtpass;
     TextView txsignup;
     Button button;
+    ProgressBar loading;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please wait...");
         AnhXa(view);
         sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
         button.setOnClickListener(new View.OnClickListener() {
@@ -80,11 +79,12 @@ public class LoginFragment extends Fragment {
         edtuser = (EditText) view.findViewById(R.id.ed_email);
         edtpass = (EditText) view.findViewById(R.id.ed_password);
         button = (Button) view.findViewById(R.id.btn_login);
+        loading = (ProgressBar) view.findViewById(R.id.progressLoad);
+        loading.setVisibility(View.GONE);
     }
 
     private void GetData(final String url, final String username, final String password) {
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Please wait...");
+        loading.setVisibility(View.VISIBLE);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         Log.d("requestQueue", requestQueue.toString());
         JSONObject jsonObject = new JSONObject();
@@ -107,9 +107,10 @@ public class LoginFragment extends Fragment {
                     Log.d("code_id", code_id + "");
                     if (code_id == 200) {
                         JSONObject json = new JSONObject(jsonResponse.toString());
-                        JSONObject resultObj = json.getJSONObject( "msg");
-                        Log.d("resultObj",resultObj.toString());
-                        Log.d("resultObj",resultObj.optString("hoten"));
+                        JSONObject resultObj = json.getJSONObject("msg");
+                        Log.d("resultObj", resultObj.toString());
+                        Log.d("resultObj", resultObj.optString("hoten"));
+                        loading.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("taikhoan", username);
@@ -119,10 +120,11 @@ public class LoginFragment extends Fragment {
                         editor.commit();
                         startActivity(new Intent(getContext(), MainActivity.class));
                         getActivity().finish();
-                    } else if (code_id == 201){
+                    } else if (code_id == 201) {
+                        loading.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Tài khoản không tồn tại, mời đăng ký!", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                    } else {
+                        loading.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Sai Mật khẩu!", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
