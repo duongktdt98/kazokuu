@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_login:
                     mSharedPreferences = getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
-                    boolean getLoginSession = mSharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, true);
+                    boolean getLoginSession = mSharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
                     if (getLoginSession){
                         fragment = new UserAccount();
                         loadFragment(fragment);

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -104,10 +106,15 @@ public class LoginFragment extends Fragment {
                     int code_id = Integer.parseInt(jsonResponse.optString("code"));
                     Log.d("code_id", code_id + "");
                     if (code_id == 200) {
+                        JSONObject json = new JSONObject(jsonResponse.toString());
+                        JSONObject resultObj = json.getJSONObject( "msg");
+                        Log.d("resultObj",resultObj.toString());
+                        Log.d("resultObj",resultObj.optString("hoten"));
                         Toast.makeText(getContext(), "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("taikhoan", username);
                         editor.putString("matkhau", username);
+                        editor.putString("hoten", resultObj.optString("hoten"));
                         editor.putBoolean(PreferenceClass.IS_LOGIN, true);
                         editor.commit();
                         startActivity(new Intent(getContext(), MainActivity.class));

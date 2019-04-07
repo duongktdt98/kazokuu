@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
@@ -23,6 +24,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class UserAccount extends Fragment {
     //public boolean LOGIN = false;
+    TextView txthoten;
     SharedPreferences sharedPreferences;
     private RelativeLayout activity_user__account, fragment_not_login;
     RelativeLayout div_log_out,hotline_div;
@@ -33,9 +35,12 @@ public class UserAccount extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user__account, container, false);
         div_log_out = (RelativeLayout) view.findViewById(R.id.log_out_div);
         hotline_div = (RelativeLayout) view.findViewById(R.id.hotline_div);
+        txthoten = (TextView) view.findViewById(R.id.user_name);
         // Inflate the layout for this fragment
         sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, MODE_PRIVATE);
         // checkLogInSession();
+        String hoten = sharedPreferences.getString("hoten", "");
+        txthoten.setText(hoten);
         div_log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
