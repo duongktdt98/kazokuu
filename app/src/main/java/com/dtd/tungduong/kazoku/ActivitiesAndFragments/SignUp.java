@@ -10,13 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.dtd.tungduong.kazoku.R;
+
+import static com.dtd.tungduong.kazoku.Constants.Config.LOGIN_URL;
 
 
 public class SignUp extends Fragment {
     ImageView iconback;
+    EditText ed_fname, ed_lname, ed_user, ed_password;
+    Button btn_signup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,11 +41,32 @@ public class SignUp extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        // Lấy thông tin
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ed_fname.getText().length() == 0) {
+                    Toast.makeText(getContext(), "Vui lòng nhập Họ!", Toast.LENGTH_SHORT).show();
+                } else if (ed_lname.getText().length() == 0) {
+                    Toast.makeText(getContext(), "Vui lòng nhập Tên!", Toast.LENGTH_SHORT).show();
+                } else if (ed_user.getText().length() == 0) {
+                    Toast.makeText(getContext(), "Vui lòng nhập Tài khoản!", Toast.LENGTH_SHORT).show();
+                } else if (ed_password.getText().length() == 0) {
+                    Toast.makeText(getContext(), "Vui lòng nhập Mật khẩu!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         return view;
     }
 
-    private void  AnhXa(View view){
-        iconback  = (ImageView) view.findViewById(R.id.back_icon);
+    private void AnhXa(View view) {
+        iconback = (ImageView) view.findViewById(R.id.back_icon);
+        ed_fname = (EditText) view.findViewById(R.id.ed_fname);
+        ed_lname = (EditText) view.findViewById(R.id.ed_lname);
+        ed_user = (EditText) view.findViewById(R.id.ed_email);
+        ed_password = (EditText) view.findViewById(R.id.ed_password);
+        btn_signup = (Button) view.findViewById(R.id.btn_signup);
 
     }
 

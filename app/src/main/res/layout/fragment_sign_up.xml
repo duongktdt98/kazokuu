@@ -151,7 +151,7 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/btn_loadmore"
+                android:id="@+id/btn_signup"
                 style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -172,7 +172,7 @@
                 android:id="@+id/or_image"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_below="@+id/btn_loadmore"
+                android:layout_below="@+id/btn_signup"
                 android:layout_marginLeft="48dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="48dp"
