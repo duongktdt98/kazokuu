@@ -3,12 +3,245 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitiesAndFragments.SignUp"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    tools:context=".ActivitiesAndFragments.SignUp">
 
-    <TextView
+
+    <RelativeLayout
+        android:id="@+id/main_sign_up"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/colorBG"
+        android:orientation="vertical">
+        <TextView
+            android:gravity="center_horizontal"            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:text="Đăng nhập" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp">
+
+            <ImageView
+                android:id="@+id/back_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/ic_navigate_before_black_24dp"
+                android:layout_marginBottom="5dp"/>
+
+            <TextView
+                android:id="@+id/tv_fname"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:gravity="center"
+                android:paddingLeft="14dp"
+                android:text="Nhập họ"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_fname"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@+id/tv_fname"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:hint="Đặng"
+                android:imeOptions="actionNext"
+                android:inputType="textWebEmailAddress"
+                android:paddingLeft="10dp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_lname"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_below="@+id/tv_fname"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:gravity="center"
+                android:paddingLeft="14dp"
+                android:text="Nhập tên"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_lname"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/ed_fname"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/tv_lname"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:hint="Tùng Dương"
+                android:imeOptions="actionNext"
+                android:inputType="textWebEmailAddress"
+                android:paddingLeft="10dp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_below="@+id/ed_lname"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:gravity="center"
+                android:paddingLeft="14dp"
+
+                android:text="Tên tài khoản"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_email"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/ed_lname"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/tv_email"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:hint="kazoku@gmail.com"
+                android:imeOptions="actionNext"
+                android:inputType="textWebEmailAddress"
+                android:paddingLeft="10dp"
+                android:textSize="14sp"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_below="@+id/tv_email"
+                android:layout_marginTop="1dp"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:gravity="center"
+                android:paddingLeft="14dp"
+                android:text="Mật khẩu"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/ed_password"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/ed_email"
+                android:layout_marginTop="1dp"
+                android:layout_toRightOf="@+id/tv_password"
+                android:background="@color/colorWhite"
+                android:fontFamily="font/verdana.ttf"
+                android:hint="@string/password_hint"
+                android:imeOptions="actionDone"
+                android:inputType="textWebPassword"
+                android:paddingLeft="10dp"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_loadmore"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/ed_password"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/round_shape_btn_login"
+                android:fontFamily="@font/verdana"
+                android:text="@string/sign_up"
+                android:textColor="@color/colorWhite"
+                android:textSize="13sp"
+                android:textStyle="normal"
+
+                />
+
+            <ImageView
+                android:id="@+id/or_image"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/btn_loadmore"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="48dp"
+                android:background="@drawable/or" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/or_image"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <RelativeLayout
+                    android:id="@+id/fb_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/or_image"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/round_shape_btn_fb"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:id="@+id/btn_fb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@null"
+                        android:fontFamily="@font/verdana"
+                        android:text="@string/sign_up_fb"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/google_sign_up_div"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/fb_div"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/round_shape_btn_login"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <TextView
+                        android:id="@+id/btn_google"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:background="@null"
+                        android:fontFamily="@font/verdana"
+                        android:text="@string/sign_up_google"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="13sp"
+                        android:textStyle="normal" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 
 </FrameLayout>
