@@ -42,7 +42,7 @@
                 android:fontFamily="font/verdana.ttf"
                 android:gravity="center"
                 android:paddingLeft="14dp"
-                android:text="Nhập họ"
+                android:text="Nhập họ tên"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
@@ -54,7 +54,7 @@
                 android:layout_toRightOf="@+id/tv_fname"
                 android:background="@color/colorWhite"
                 android:fontFamily="font/verdana.ttf"
-                android:hint="Đặng"
+                android:hint="Đặng Tùng Dương"
                 android:imeOptions="actionNext"
                 android:inputType="textWebEmailAddress"
                 android:paddingLeft="10dp"
@@ -70,12 +70,12 @@
                 android:fontFamily="font/verdana.ttf"
                 android:gravity="center"
                 android:paddingLeft="14dp"
-                android:text="Nhập tên"
+                android:text="Nhập Số điện thoại"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/ed_lname"
+                android:id="@+id/ed_sdt"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_below="@+id/ed_fname"
@@ -83,7 +83,7 @@
                 android:layout_toRightOf="@+id/tv_lname"
                 android:background="@color/colorWhite"
                 android:fontFamily="font/verdana.ttf"
-                android:hint="Tùng Dương"
+                android:hint="0123456789"
                 android:imeOptions="actionNext"
                 android:inputType="textWebEmailAddress"
                 android:paddingLeft="10dp"
@@ -93,7 +93,7 @@
                 android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:layout_below="@+id/ed_lname"
+                android:layout_below="@+id/ed_sdt"
                 android:layout_marginTop="1dp"
                 android:background="@color/colorWhite"
                 android:fontFamily="font/verdana.ttf"
@@ -108,7 +108,7 @@
                 android:id="@+id/ed_email"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_below="@+id/ed_lname"
+                android:layout_below="@+id/ed_sdt"
                 android:layout_marginTop="1dp"
                 android:layout_toRightOf="@+id/tv_email"
                 android:background="@color/colorWhite"
@@ -149,13 +149,45 @@
                 android:inputType="textWebPassword"
                 android:paddingLeft="10dp"
                 android:textSize="14sp" />
+<RelativeLayout
+    android:gravity="center_vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/div_radio_gt"
+    android:layout_below="@id/ed_password"
+    android:layout_marginTop="15dp"
+    >
+
+
+    <RadioGroup
+        android:layout_marginRight="10dp"
+        android:id="@+id/rd_gt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nam"
+            android:id="@+id/rd_nam"
+            />
+
+        <RadioButton
+            android:id="@+id/rd_nu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nữ" />
+    </RadioGroup>
+
+
+</RelativeLayout>
 
             <Button
                 android:id="@+id/btn_signup"
                 style="@style/Base.Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@+id/ed_password"
+                android:layout_below="@+id/div_radio_gt"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="15dp"
