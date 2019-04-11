@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "755663702529",
+    "firebase_url": "https://kazoku-35700.firebaseio.com",
+    "project_id": "kazoku-35700",
+    "storage_bucket": "kazoku-35700.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755663702529:android:745e5599bf6e2588",
+        "android_client_info": {
+          "package_name": "com.dtd.tungduong.kazoku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755663702529-flai98252beiob1d9veqi8s2rjh8p5va.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm5pHPxmUspnjbr1I90A-q8YXx-iPH-dY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755663702529-flai98252beiob1d9veqi8s2rjh8p5va.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
