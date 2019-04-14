@@ -27,8 +27,8 @@
     <string name="google_api_client_id">6481736747-83gb9rebu2imkt56iu7i9c3moqbefpto.apps.googleusercontent.com</string>
     <string name="google_gmail_release">6481736747-2k0fjl6s111oum2d7ph0vvre4rnodq5a.apps.googleusercontent.com</string>
 
-    <string name="google_api_realsekey">AIzaSyARcB6kdrI2Tf7-A5JnZdCg-ISRzfaoPi8</string>
-    <string name="google_api_debug">AIzaSyARcB6kdrI2Tf7-A5JnZdCg-ISRzfaoPi8</string>
+    <string name="google_api_realsekey">AIzaSyCGFd_ck1F0Cu1IpbjZ_PcEBB4WAZy0ESo</string>
+    <string name="google_api_debug">AIzaSyCGFd_ck1F0Cu1IpbjZ_PcEBB4WAZy0ESo</string>
 
 
     <string name="default_notification_channel_id">channel-01</string>

@@ -4,7 +4,8 @@
     android:id="@+id/frame_search"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitiesAndFragments.SearchFragment">
+    tools:context=".ActivitiesAndFragments.SearchFragment"
+    android:layout_marginBottom="70dp">
 
 
     <RelativeLayout
@@ -181,7 +182,7 @@
             android:layout_below="@id/div_search"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
-            android:padding="10dp">
+            >
 
             <TextView
                 android:id="@+id/tv_vetifi"
@@ -202,10 +203,6 @@
                 android:background="@drawable/ic_verified_user_black_24dp" />
 
             <GridView
-                android:bottomRightRadius="10dp"
-                android:bottomLeftRadius="10dp"
-                android:topLeftRadius="10dp"
-                android:topRightRadius="10dp"
                 android:scrollbars="none"
                 android:id="@+id/gv_nha_tro"
                 android:layout_width="wrap_content"
