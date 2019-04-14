@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class LoginFragment extends Fragment {
     TextView txsignup;
     Button button;
     ProgressBar loading;
+    RelativeLayout loginFB, loginGM;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +55,18 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         AnhXa(view);
         sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+        loginFB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Tính năng đang trong giai đoạn phát triển", Toast.LENGTH_SHORT).show();
+            }
+        });
+        loginGM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Tính năng đang trong giai đoạn phát triển", Toast.LENGTH_SHORT).show();
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (edtuser.getText().length() == 0 || edtpass.getText().length() == 0) {
@@ -81,6 +95,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void AnhXa(View view) {
+        loginFB = (RelativeLayout) view.findViewById(R.id.fb_div_login);
+        loginGM = (RelativeLayout) view.findViewById(R.id.google_sign_in_div);
         txsignup = (TextView) view.findViewById(R.id.tv_signed_up_now);
         edtuser = (EditText) view.findViewById(R.id.ed_email);
         edtpass = (EditText) view.findViewById(R.id.ed_password);

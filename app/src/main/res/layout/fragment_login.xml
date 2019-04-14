@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_login"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/frame_login"
     tools:context=".ActivitiesAndFragments.LoginFragment">
     xmnls:xmlns:app="http://schemas.android.com/apk/res-auto"
 
     <RelativeLayout
         android:id="@+id/frame_layout_login"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorBG">
+        android:layout_height="wrap_content">
 
         <TextView
-           android:gravity="center_horizontal"            android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="16dp"
-            android:text="Đăng nhập" />
+            android:gravity="center_horizontal"
+            android:text="Đăng nhập"
+            android:textSize="20dp" />
+
         <RelativeLayout
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="35dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorEditTextBG"
                     android:layout_alignParentBottom="true"
-                    />
+                    android:background="@color/colorEditTextBG" />
 
             </RelativeLayout>
 
@@ -39,20 +41,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_marginTop="35dp"
-                android:gravity="center"
                 android:background="@color/colorWhite"
-                android:text="Tài khoản"
+                android:gravity="center"
                 android:paddingLeft="14dp"
+                android:text="Tài khoản"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorEditTextBG"
                 android:layout_below="@+id/ed_password"
-                />
-
+                android:background="@color/colorEditTextBG" />
 
 
             <EditText
@@ -60,13 +60,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="35dp"
-                android:inputType="textWebEmailAddress"
-                android:imeOptions="actionNext"
-                android:textSize="14sp"
                 android:layout_toRightOf="@+id/tv_email"
                 android:background="@color/colorWhite"
                 android:hint="Tên tài khoản, Email"
-                android:paddingLeft="10dp" />
+                android:imeOptions="actionNext"
+                android:inputType="textWebEmailAddress"
+                android:paddingLeft="10dp"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_password"
@@ -74,10 +74,10 @@
                 android:layout_height="45dp"
                 android:layout_below="@+id/tv_email"
                 android:layout_marginTop="1dp"
-                android:gravity="center"
                 android:background="@color/colorWhite"
-                android:text="Mật khẩu"
+                android:gravity="center"
                 android:paddingLeft="14dp"
+                android:text="Mật khẩu"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
 
@@ -87,25 +87,26 @@
                 android:layout_height="45dp"
                 android:layout_below="@+id/ed_email"
                 android:layout_marginTop="1dp"
-                android:textSize="14sp"
-                android:inputType="textWebPassword"
-                android:imeOptions="actionDone"
                 android:layout_toRightOf="@+id/tv_password"
                 android:background="@color/colorWhite"
                 android:hint="@string/password_hint"
-                android:paddingLeft="10dp" />
+                android:imeOptions="actionDone"
+                android:inputType="textWebPassword"
+                android:paddingLeft="10dp"
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tv_forget_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
                 android:layout_below="@+id/ed_password"
-                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
                 android:gravity="right"
-                android:textSize="13sp"
                 android:text="Quên mật khẩu?"
-                android:textColor="@color/colorRed" />
+                android:textColor="@color/colorRed"
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -132,15 +133,16 @@
                     android:textStyle="normal" />
 
                 <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp">
+
                     <TextView
-                        android:layout_marginRight="10dp"
                         android:id="@+id/tv_sign_up"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
                         android:layout_toLeftOf="@+id/tv_signed_up_now"
                         android:text="Bạn chưa có tài khoản? "
                         android:textColor="@color/or_color_name"
@@ -161,11 +163,11 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
                     android:id="@+id/or_image"
                     android:layout_width="wrap_content"
                     android:layout_height="10dp"
                     android:layout_marginLeft="52dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="52dp"
                     android:background="@drawable/or"
                     android:backgroundTint="@null" />
@@ -178,7 +180,7 @@
 
                 <RelativeLayout
 
-                    android:id="@+id/fb_div"
+                    android:id="@+id/fb_div_login"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
@@ -241,8 +243,6 @@
 
             </LinearLayout>
         </RelativeLayout>
-
-
 
 
     </RelativeLayout>

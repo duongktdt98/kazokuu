@@ -13,82 +13,57 @@ import android.util.Range;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dtd.tungduong.kazoku.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 import static android.support.constraint.Constraints.TAG;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SearchFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SearchFragment extends Fragment {
-    Button btn;
+    TextView btn;
     TextView txt;
     ImageView img;
-    RadioButton kv_hn,kv_h,kv_hcm;
+    RadioButton kv_hn, kv_h, kv_hcm;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    GridView gv_nha_tro;
+    ArrayList<HinhAnh> arrayImage;
+    HomeAdapter adapterHome;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    public SearchFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        btn = view.findViewById(R.id.btn_search_kv);
-        txt= view.findViewById(R.id.tpg);
-        img=view.findViewById(R.id.img_tpgap);
+        AnhXa(view);
 
+     //   ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayStrings);
+
+   //     gv_nha_tro.setAdapter(arrayAdapter);
+        arrayImage = new ArrayList<>();
+        DataArrayList();
+        adapterHome = new HomeAdapter(arrayImage, getContext());
+        //adapterHome.getView(arrayImage,null);
+        gv_nha_tro.setAdapter(adapterHome);
+
+        gv_nha_tro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(), arrayImage.get(position).getTen() , Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,8 +72,8 @@ public class SearchFragment extends Fragment {
                 LayoutInflater inflater = getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.khuvuc, null);
                 dialog.setView(dialogView);
-                kv_hn  = dialogView.findViewById(R.id.radio_hn);
-                kv_h   = dialogView.findViewById(R.id.radio_h);
+                kv_hn = dialogView.findViewById(R.id.radio_hn);
+                kv_h = dialogView.findViewById(R.id.radio_h);
                 kv_hcm = dialogView.findViewById(R.id.radio_hcm);
                 kv_hn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -138,33 +113,39 @@ public class SearchFragment extends Fragment {
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void AnhXa(View view) {
+        btn = (TextView) view.findViewById(R.id.btn_search_kv);
+        txt = (TextView) view.findViewById(R.id.tpg);
+        img = (ImageView) view.findViewById(R.id.img_tpgap);
+        gv_nha_tro = (GridView) view.findViewById(R.id.gv_nha_tro);
+        ImageView image_home = (ImageView) view.findViewById(R.id.image_home);
     }
 
+    public void DataArrayList(){
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+       // HinhAnh HinhanhObj = new HinhAnh();
+
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 1"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 2"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 3"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 4"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 5"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 6"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 7"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 8"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 9"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 10"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 11"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 12"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 13"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 14"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 15"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 16"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 17"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 18"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 19"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 20"));
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 
 }

@@ -13,11 +13,13 @@
         android:layout_height="match_parent"
         android:background="@color/colorBG"
         android:orientation="vertical">
+
         <TextView
-            android:gravity="center_horizontal"            android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="16dp"
-            android:text="Đăng nhập" />
+            android:gravity="center_horizontal"
+            android:text="Đăng ký"
+            android:textSize="20dp" />
 
 
         <RelativeLayout
@@ -30,8 +32,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/ic_navigate_before_black_24dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ic_navigate_before_black_24dp" />
 
             <TextView
                 android:id="@+id/tv_fname"
@@ -149,38 +151,37 @@
                 android:inputType="textWebPassword"
                 android:paddingLeft="10dp"
                 android:textSize="14sp" />
-<RelativeLayout
-    android:gravity="center_vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/div_radio_gt"
-    android:layout_below="@id/ed_password"
-    android:layout_marginTop="15dp"
-    >
+
+            <RelativeLayout
+                android:id="@+id/div_radio_gt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ed_password"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical">
 
 
-    <RadioGroup
-        android:layout_marginRight="10dp"
-        android:id="@+id/rd_gt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+                <RadioGroup
+                    android:id="@+id/rd_gt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp">
 
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nam"
-            android:id="@+id/rd_nam"
-            />
+                    <RadioButton
+                        android:id="@+id/rd_nam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nam" />
 
-        <RadioButton
-            android:id="@+id/rd_nu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nữ" />
-    </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rd_nu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nữ" />
+                </RadioGroup>
 
 
-</RelativeLayout>
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_signup"

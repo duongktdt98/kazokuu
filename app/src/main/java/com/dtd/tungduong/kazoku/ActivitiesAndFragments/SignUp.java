@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,6 +41,7 @@ public class SignUp extends Fragment {
     RadioGroup radioGroupgt;
     RadioButton rd_nam, rd_nu;
     String gioitinh;
+    RelativeLayout signupFb, signupGm;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +66,18 @@ public class SignUp extends Fragment {
         final Editable usernaeme = ed_user.getText();
         final Editable password = ed_password.getText();
 
+        signupGm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Tính năng đang trong giai đoạn phát triển", Toast.LENGTH_SHORT).show();
+            }
+        });
+        signupFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Tính năng đang trong giai đoạn phát triển", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         radioGroupgt.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -142,6 +156,8 @@ public class SignUp extends Fragment {
         radioGroupgt = (RadioGroup) view.findViewById(R.id.rd_gt);
         rd_nam = (RadioButton) view.findViewById(R.id.rd_nam);
         rd_nu = (RadioButton) view.findViewById(R.id.rd_nu);
+        signupFb =(RelativeLayout) view.findViewById(R.id.fb_div);
+        signupGm =(RelativeLayout) view.findViewById(R.id.google_sign_up_div);
     }
 
     public void registerUser(Editable fname, Editable sdt, Editable usernaeme, Editable password, String gioitinh) {
