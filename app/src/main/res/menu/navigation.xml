@@ -12,8 +12,8 @@
         android:title="@string/title_chat" />
 
     <item
-        android:id="@+id/navigation_location"
-        android:icon="@drawable/ic_gps_fixed_black_24dp"
+        android:id="@+id/navigation_add_home"
+        android:icon="@drawable/ic_home_add_black_24dp"
         android:title="@string/title_location" />
 
     <item

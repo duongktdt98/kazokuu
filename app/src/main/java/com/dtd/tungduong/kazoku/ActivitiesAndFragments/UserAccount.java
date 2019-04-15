@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
@@ -27,19 +28,20 @@ public class UserAccount extends Fragment {
     TextView txthoten;
     SharedPreferences sharedPreferences;
     private RelativeLayout activity_user__account, fragment_not_login;
-    RelativeLayout div_log_out, hotline_div;
-
+    RelativeLayout div_log_out, hotline_div, user_name, room_you_rent, room_for_rent;
+String hoten;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user__account, container, false);
         div_log_out = (RelativeLayout) view.findViewById(R.id.log_out_div);
         hotline_div = (RelativeLayout) view.findViewById(R.id.hotline_div);
+        user_name = (RelativeLayout) view.findViewById(R.id.user_name_div);
         txthoten = (TextView) view.findViewById(R.id.user_name);
         // Inflate the layout for this fragment
         sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, MODE_PRIVATE);
         // checkLogInSession();
-        String hoten = sharedPreferences.getString("hoten", "");
+        hoten = sharedPreferences.getString("hoten", "");
         txthoten.setText(hoten);
         div_log_out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +59,13 @@ public class UserAccount extends Fragment {
     }
 
     public void Init(View view) {
+        user_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Chúc bạn "+ hoten + " ngày mới vui vẻ!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         hotline_div.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

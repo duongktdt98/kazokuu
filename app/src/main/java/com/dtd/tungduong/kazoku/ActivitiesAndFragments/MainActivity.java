@@ -1,10 +1,8 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -19,8 +17,6 @@ import android.widget.Toast;
 
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
-
-import static com.dtd.tungduong.kazoku.Constants.PreferenceClass.IS_LOGIN;
 
 public class MainActivity extends AppCompatActivity {
     private long mBackPressed;
@@ -68,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new ChatFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.navigation_location:
-                    fragment = new LocationFragment();
+                case R.id.navigation_add_home:
+                    fragment = new AddRoomFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_login:

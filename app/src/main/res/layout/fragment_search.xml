@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivitiesAndFragments.SearchFragment"
-    android:layout_marginBottom="70dp">
+    android:layout_marginBottom="0dp">
 
 
     <RelativeLayout
+        android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -42,8 +43,6 @@
                 android:id="@+id/search_ed"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:background="@drawable/btn_khuvuc"
                 android:focusableInTouchMode="true"
                 android:orientation="horizontal">
@@ -75,103 +74,6 @@
                     android:textSize="15dp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/search_ed">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/radius_timnhanh"
-                    android:orientation="vertical"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="5px">
-
-                    <ImageView
-                        android:id="@+id/img_tpgap"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/tpn"
-                        android:src="@drawable/timgan" />
-
-                    <TextView
-                        android:id="@+id/tpg"
-                        android:layout_width="65dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Tìm phòng gấp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="#DDDDDD"
-                    android:orientation="vertical"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="5px">
-
-                    <ImageView
-                        android:id="@+id/img_tpgan"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/gn_lv"
-                        android:src="@drawable/timnha" />
-
-                    <TextView
-                        android:layout_width="65dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Tìm gần chỗ học và làm" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="#DDDDDD"
-                    android:orientation="vertical"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="5px">
-
-                    <ImageView
-                        android:id="@+id/img_tpkcc"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/chungchu"
-                        android:src="@drawable/kcc" />
-
-                    <TextView
-                        android:layout_width="65dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="không chung chủ" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/radius_timnhanh"
-                    android:orientation="vertical"
-                    android:paddingLeft="12dp"
-                    android:paddingTop="5px">
-
-                    <ImageView
-
-                        android:id="@+id/img_add"
-                        android:layout_width="65dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/addphong"
-                        android:src="@drawable/add" />
-
-                    <TextView
-                        android:layout_width="65dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="Đăng phòng ngay" />
-                </LinearLayout>
-            </LinearLayout>
 
 
         </RelativeLayout>
@@ -185,6 +87,7 @@
             >
 
             <TextView
+                android:layout_marginLeft="15dp"
                 android:id="@+id/tv_vetifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

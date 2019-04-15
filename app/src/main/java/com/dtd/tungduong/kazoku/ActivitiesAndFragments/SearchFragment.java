@@ -135,8 +135,6 @@ public class SearchFragment extends Fragment {
 
     public void AnhXa(View view) {
         btn = (TextView) view.findViewById(R.id.btn_search_kv);
-        txt = (TextView) view.findViewById(R.id.tpg);
-        img = (ImageView) view.findViewById(R.id.img_tpgap);
         gv_nha_tro = (GridView) view.findViewById(R.id.gv_nha_tro);
         ImageView image_home = (ImageView) view.findViewById(R.id.image_home);
     }
@@ -145,10 +143,10 @@ public class SearchFragment extends Fragment {
 
        // HinhAnh HinhanhObj = new HinhAnh();
 
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 1","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 2","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 3","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 4","Hà Nội"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "Nhà trọ ở Cầu Giấy","Hà Nội"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "Nhà trọ khu vực Bách Khoa","Hà Nội"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "Phòng trọ khu Đại Học Quốc Gia","Hà Nội"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "Phòng trọ sinh viên ITPlus","Hà Nội"));
         arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 5","Hà Nội"));
         arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 6","Hà Nội"));
         arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 7","Hà Nội"));
