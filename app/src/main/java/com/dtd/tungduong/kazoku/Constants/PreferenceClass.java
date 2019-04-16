@@ -54,6 +54,7 @@ public class PreferenceClass {
     public static final String DEALS_QUANTITY = "dealsQuantity";
 
     public static final String RESTAURANT_NAME = "restaurantName";
+    public static final String RESTAURANT_URL = "restaurantUrl";
     public static final String RESTAURANT_SALOGON = "restaurantSlogon";
     public static final String RESTAURANT_IMAGE = "restaurantImage";
     public static final String RESTAURANT_ID = "restaurantID";

@@ -7,9 +7,24 @@
     tools:context=".ActivitiesAndFragments.HomeDetailFragment">
 
     <TextView
-        android:id="@+id/txt_home_detail"
+        android:id="@+id/txt_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:text="Chi tiết phòng trọ"
+        android:textSize="20dp" />
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/frame_layout_detail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_launcher_background"
+
+            />
+    </RelativeLayout>
 
 </FrameLayout>

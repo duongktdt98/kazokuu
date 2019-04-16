@@ -152,12 +152,11 @@ public class LoginFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Looix", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Kiểm tra lại mạng", Toast.LENGTH_SHORT).show();
                 Log.d("Eror", error.getMessage() + "");
             }
         });
