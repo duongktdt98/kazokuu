@@ -106,6 +106,7 @@
                 android:background="@drawable/ic_verified_user_black_24dp" />
 
             <GridView
+                android:background="#EBEBEB"
                 android:scrollbars="none"
                 android:id="@+id/gv_nha_tro"
                 android:layout_width="wrap_content"

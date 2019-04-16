@@ -4,27 +4,97 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBEBEB"
+    android:paddingLeft="10dp"
+    android:id="@+id/frame_detail"
+    android:paddingRight="10dp"
     tools:context=".ActivitiesAndFragments.HomeDetailFragment">
 
     <TextView
         android:id="@+id/txt_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="Chi tiết phòng trọ"
         android:textSize="20dp" />
 
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:id="@+id/frame_layout_detail"
+    <TextView
+        android:id="@+id/back_list_home"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/vien"
+        android:padding="7dp"
+        android:text="Trở lại" />
+
+    <RelativeLayout
+        android:id="@+id/frame_layout_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp">
+
         <ImageView
+            android:id="@+id/img_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_launcher_background"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/ic_launcher_background" />
 
-            />
+        <TextView
+            android:id="@+id/txt_name_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_detail"
+            android:layout_marginBottom="10dp"
+            android:text="Tên Phòng: "
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_name_home_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_detail"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/txt_name_detail"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_name_detail"
+            android:layout_marginBottom="10dp"
+            android:text="Địa chỉ: "
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_adress_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_name_home_detail"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/txt_adress"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_prices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_adress"
+            android:text="Giá tiền: "
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txt_prices_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_adress_room"
+            android:layout_toRightOf="@+id/txt_prices"
+            android:textSize="16dp" />
+
+
     </RelativeLayout>
+
 
 </FrameLayout>

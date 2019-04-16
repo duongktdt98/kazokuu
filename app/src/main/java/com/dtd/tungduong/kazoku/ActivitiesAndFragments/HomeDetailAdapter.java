@@ -1,7 +1,6 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,19 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dtd.tungduong.kazoku.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeAdapter extends BaseAdapter {
+public class HomeDetailAdapter extends BaseAdapter {
     private List<HinhAnh> hinhAnhList;
     Context context;
 
-    public HomeAdapter(List<HinhAnh> hinhAnhList, Context context) {
+    public HomeDetailAdapter(List<HinhAnh> hinhAnhList, Context context) {
         this.hinhAnhList = hinhAnhList;
         this.context = context;
     }
@@ -45,12 +42,10 @@ public class HomeAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.row_home_icon,null);
-        TextView txtname  =(TextView) view.findViewById(R.id.txt_name_home);
-        TextView price  =(TextView) view.findViewById(R.id.prices_total);
-        ImageView imageView = (ImageView) view.findViewById(R.id.image_home);
-        txtname.setText(hinhAnhList.get(position).getTen());
-        price.setText(hinhAnhList.get(position).getGia_tien());
+        view = inflater.inflate(R.layout.fragment_home_detail,null);
+       // TextView txtname  =(TextView) view.findViewById(R.id.txt_name_home);
+        ImageView imageView = (ImageView) view.findViewById(R.id.img_detail);
+        //txtname.setText(hinhAnhList.get(position).getTen());
        Picasso.with(context).load(hinhAnhList.get(position).getURL_hinh()).resize(150, 150).into(imageView);
 //        Glide.with(context).load(hinhAnhList.get(position)
 //                .getURL_hinh())

@@ -61,7 +61,8 @@ public class PreferenceClass {
     public static final String RESTAURANT_ABOUT = "restaurantAbout";
     public static final String RESTAURANT_RATING = "restaurantRating";
     public static final String RESTAURANT_SPECIALITY = "restSpeciality";
-    public static final String RESTAURANT_ITEM_TAX = "resItemTax";
+    public static final String RESTAURANT_ADRESS = "resItemAdress";
+    public static final String RESTAURANT_PRICE = "resItemPrice";
     public static final String RESTAURANT_ITEM_FEE = "resItemFee";
     public static final String RESTAURANT_MENU_ITEM_ID = "restaurantMenuItemID";
     public static final String DELIVERY_FEE_PER_KM = "deliveryFeeKm";

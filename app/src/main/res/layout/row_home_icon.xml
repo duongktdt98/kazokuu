@@ -46,6 +46,6 @@
         android:text="2.000.000"
         android:layout_toRightOf="@id/diachi"
         android:layout_below="@id/txt_name_home"
-        android:id="@+id/prices"
+        android:id="@+id/prices_total"
         />
 </RelativeLayout>

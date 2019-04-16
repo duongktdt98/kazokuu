@@ -73,11 +73,14 @@ public class SearchFragment extends Fragment {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(PreferenceClass.RESTAURANT_NAME, arrayImage.get(position).getTen());
                     editor.putString(PreferenceClass.RESTAURANT_URL, arrayImage.get(position).getURL_hinh());
+                    editor.putString(PreferenceClass.RESTAURANT_ADRESS, arrayImage.get(position).getDiaChi());
+                    editor.putString(PreferenceClass.RESTAURANT_PRICE, arrayImage.get(position).getGia_tien());
                     editor.commit();
-                    Fragment restaurantMenuItemsFragment = new HomeDetailFragment();
+                    Fragment homeDetailFragment = new HomeDetailFragment();
                     FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction transaction =  fragmentManager.beginTransaction();
-                    transaction.replace(R.id.frame_search, restaurantMenuItemsFragment).commit();
+                    transaction.replace(R.id.frame_search, homeDetailFragment);
+                    transaction.commit();
                  } catch (IndexOutOfBoundsException e) {
                 e.getCause();
             }
@@ -144,26 +147,21 @@ public class SearchFragment extends Fragment {
 
        // HinhAnh HinhanhObj = new HinhAnh();
 
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "Nhà trọ ở Cầu Giấy","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://thanhduong.vantinviet.com/image/1/ahihi.jpg", "Nhà trọ khu vực Bách Khoa","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjRrav_v9ThAhWId94KHdmlDcQQjRx6BAgBEAU&url=%2Furl%3Fsa%3Di%26source%3Dimages%26cd%3D%26ved%3D%26url%3Dhttps%253A%252F%252Fnha.chotot.com%252Fhuyen-hoc-mon%252Fthue-phong-tro%252F36809533.htm%26psig%3DAOvVaw0bzvQTmEKm1JFegaJnoMT3%26ust%3D1555500173781352&psig=AOvVaw0bzvQTmEKm1JFegaJnoMT3&ust=1555500173781352", "Phòng trọ khu Đại Học Quốc Gia","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://static.chotot.com.vn/1/images/3QDrXECN27wBMDD8uLRpYSsxRavij2cPnKmjyXwPc7SYXFPvWubgNxfS3DeBeZVMJD211F5.BcdnqMxAAKX5YG6PS4m6Lv1NxxKn1rkj3p7xqPqk4AEh", "Phòng trọ sinh viên ITPlus","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 5","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 6","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 7","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 8","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 9","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 10","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 11","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 12","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 13","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 14","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 15","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 16","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 17","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 18","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 19","Hà Nội"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 20","Hà Nội"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "Nhà trọ ở Cầu Giấy","Hà Nội", "2500000"));
+        arrayImage.add(new HinhAnh("https://thanhduong.vantinviet.com/image/1/ahihi.jpg", "Nhà trọ khu vực Bách Khoa","Hà Nội", "2700000"));
+        arrayImage.add(new HinhAnh("http://mediaold.tiin.vn:8080/media_old_2016//medias12//2015/10/18/035451f8-add6-4f6b-bc6f-c11a96e555ea.jpg", "Phòng trọ khu Đại Học Quốc Gia","Hà Nội", "3000000"));
+        arrayImage.add(new HinhAnh("https://static.chotot.com.vn/1/images/3QDrXECN27wBMDD8uLRpYSsxRavij2cPnKmjyXwPc7SYXFPvWubgNxfS3DeBeZVMJD211F5.BcdnqMxAAKX5YG6PS4m6Lv1NxxKn1rkj3p7xqPqk4AEh", "Phòng trọ sinh viên ITPlus","Hà Nội", "1500000"));
+        arrayImage.add(new HinhAnh("http://mediaold.tiin.vn:8080/media_old_2016//medias12//2015/10/18/bef09a85-4f8a-4a3a-863e-96ed6b048396.jpg", "anh 5","Hà Nội", "3500000"));
+        arrayImage.add(new HinhAnh("http://mediaold.tiin.vn:8080/media_old_2016//medias12//2015/10/18/042b9fa0-00bc-4e90-88c9-387c5105d91b.jpg", "anh 6","Hà Nội", "2900000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 7","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 8","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 9","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 10","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 11","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 12","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 13","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 14","Hà Nội", "2000000"));
+        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 15","Hà Nội", "2000000"));
     }
 
 
