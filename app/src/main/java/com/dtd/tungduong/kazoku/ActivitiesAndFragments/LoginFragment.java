@@ -40,12 +40,11 @@ import static com.dtd.tungduong.kazoku.Constants.Config.LOGIN_URL;
 @SuppressLint("ValidFragment")
 public class LoginFragment extends Fragment {
     SharedPreferences sharedPreferences;
-    public ProgressDialog progressDialog;
+    RelativeLayout progressDialog,transparent_layer;
     EditText edtuser;
     EditText edtpass;
     TextView txsignup;
     Button button;
-    ProgressBar loading;
     RelativeLayout loginFB, loginGM;
 
     @Override
@@ -86,7 +85,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 SignUp signUpfragment = new SignUp();
-                fragmentTransaction.replace(R.id.frame_login, signUpfragment);
+                fragmentTransaction.replace(R.id.frame_container, signUpfragment);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
@@ -101,12 +101,14 @@ public class LoginFragment extends Fragment {
         edtuser = (EditText) view.findViewById(R.id.ed_email);
         edtpass = (EditText) view.findViewById(R.id.ed_password);
         button = (Button) view.findViewById(R.id.btn_login);
-        loading = (ProgressBar) view.findViewById(R.id.progressLoad);
-        loading.setVisibility(View.GONE);
+        progressDialog = view.findViewById(R.id.progressDialog);
+        transparent_layer = view.findViewById(R.id.transparent_layer);
+
     }
 
     private void GetData(final String url, final String username, final String password) {
-        loading.setVisibility(View.VISIBLE);
+        progressDialog.setVisibility(View.VISIBLE);
+        transparent_layer.setVisibility(View.VISIBLE);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         Log.d("requestQueue", requestQueue.toString());
         JSONObject jsonObject = new JSONObject();
@@ -132,7 +134,8 @@ public class LoginFragment extends Fragment {
                         JSONObject resultObj = json.getJSONObject("msg");
                         Log.d("resultObj", resultObj.toString());
                         Log.d("resultObj", resultObj.optString("hoten"));
-                        loading.setVisibility(View.GONE);
+                        progressDialog.setVisibility(View.GONE);
+                        transparent_layer.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("taikhoan", username);
@@ -143,10 +146,12 @@ public class LoginFragment extends Fragment {
                         startActivity(new Intent(getContext(), MainActivity.class));
                         getActivity().finish();
                     } else if (code_id == 201) {
-                        loading.setVisibility(View.GONE);
+                        progressDialog.setVisibility(View.GONE);
+                        transparent_layer.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Tài khoản không tồn tại, mời đăng ký!", Toast.LENGTH_SHORT).show();
                     } else {
-                        loading.setVisibility(View.GONE);
+                        progressDialog.setVisibility(View.GONE);
+                        transparent_layer.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Sai Mật khẩu!", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -156,6 +161,8 @@ public class LoginFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.setVisibility(View.GONE);
+                transparent_layer.setVisibility(View.GONE);
                 Toast.makeText(getContext(), "Kiểm tra lại mạng", Toast.LENGTH_SHORT).show();
                 Log.d("Eror", error.getMessage() + "");
             }

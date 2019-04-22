@@ -3,6 +3,7 @@ package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,29 +11,35 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.Range;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import static android.support.constraint.Constraints.TAG;
+import static com.dtd.tungduong.kazoku.Constants.Config.LIST_HOME;
 
 public class SearchFragment extends Fragment {
     TextView btn;
@@ -43,7 +50,8 @@ public class SearchFragment extends Fragment {
     GridView gv_nha_tro;
     ArrayList<HinhAnh> arrayImage;
     HomeAdapter adapterHome;
-
+    int a = 0;
+    private test.OnFragmentInteractionListener mListener;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
@@ -53,19 +61,17 @@ public class SearchFragment extends Fragment {
 
         AnhXa(view);
 
-     //   ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayStrings);
+        //   ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayStrings);
 
-   //     gv_nha_tro.setAdapter(arrayAdapter);
+        //     gv_nha_tro.setAdapter(arrayAdapter);
         arrayImage = new ArrayList<>();
         DataArrayList();
-        adapterHome = new HomeAdapter(arrayImage, getContext());
-        //adapterHome.getView(arrayImage,null);
-        gv_nha_tro.setAdapter(adapterHome);
+
 
         gv_nha_tro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), arrayImage.get(position).getTen() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), arrayImage.get(position).getTen(), Toast.LENGTH_SHORT).show();
 
                 sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
 
@@ -73,17 +79,18 @@ public class SearchFragment extends Fragment {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(PreferenceClass.RESTAURANT_NAME, arrayImage.get(position).getTen());
                     editor.putString(PreferenceClass.RESTAURANT_URL, arrayImage.get(position).getURL_hinh());
-                    editor.putString(PreferenceClass.RESTAURANT_ADRESS, arrayImage.get(position).getDiaChi());
+                    editor.putString(PreferenceClass.RESTAURANT_ADRESS, arrayImage.get(position).getDia_Chi());
                     editor.putString(PreferenceClass.RESTAURANT_PRICE, arrayImage.get(position).getGia_tien());
                     editor.commit();
-                    Fragment homeDetailFragment = new HomeDetailFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction transaction =  fragmentManager.beginTransaction();
-                    transaction.replace(R.id.frame_search, homeDetailFragment);
-                    transaction.commit();
-                 } catch (IndexOutOfBoundsException e) {
-                e.getCause();
-            }
+
+                } catch (IndexOutOfBoundsException e) {
+                    e.getCause();
+                }
+                final FragmentManager fragmentManager = getFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
+                fragmentTransaction.replace(R.id.frame_container, homeDetailFragment);
+                fragmentTransaction.commit();
 
 
             }
@@ -143,25 +150,88 @@ public class SearchFragment extends Fragment {
         ImageView image_home = (ImageView) view.findViewById(R.id.image_home);
     }
 
-    public void DataArrayList(){
+    public void DataArrayList() {
 
-       // HinhAnh HinhanhObj = new HinhAnh();
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, LIST_HOME, null, new Response.Listener<JSONObject>() {
 
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "Nhà trọ ở Cầu Giấy","Hà Nội", "2500000"));
-        arrayImage.add(new HinhAnh("https://thanhduong.vantinviet.com/image/1/ahihi.jpg", "Nhà trọ khu vực Bách Khoa","Hà Nội", "2700000"));
-        arrayImage.add(new HinhAnh("http://mediaold.tiin.vn:8080/media_old_2016//medias12//2015/10/18/035451f8-add6-4f6b-bc6f-c11a96e555ea.jpg", "Phòng trọ khu Đại Học Quốc Gia","Hà Nội", "3000000"));
-        arrayImage.add(new HinhAnh("https://static.chotot.com.vn/1/images/3QDrXECN27wBMDD8uLRpYSsxRavij2cPnKmjyXwPc7SYXFPvWubgNxfS3DeBeZVMJD211F5.BcdnqMxAAKX5YG6PS4m6Lv1NxxKn1rkj3p7xqPqk4AEh", "Phòng trọ sinh viên ITPlus","Hà Nội", "1500000"));
-        arrayImage.add(new HinhAnh("http://mediaold.tiin.vn:8080/media_old_2016//medias12//2015/10/18/bef09a85-4f8a-4a3a-863e-96ed6b048396.jpg", "anh 5","Hà Nội", "3500000"));
-        arrayImage.add(new HinhAnh("http://mediaold.tiin.vn:8080/media_old_2016//medias12//2015/10/18/042b9fa0-00bc-4e90-88c9-387c5105d91b.jpg", "anh 6","Hà Nội", "2900000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 7","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 8","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 9","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 10","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 11","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 12","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 13","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 14","Hà Nội", "2000000"));
-        arrayImage.add(new HinhAnh("https://inhome.vn/hm_content/uploads/tin-tuc/4/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien/8-mau-thiet-ke-noi-that-phong-tro-dep-cho-sinh-vien-vo-chong-moi-cuoi-8.jpg", "anh 15","Hà Nội", "2000000"));
+            @Override
+            public void onResponse(JSONObject response) {
+
+                JSONObject jsonResponse = null;
+                String strJson = response.toString();
+                Log.d("response", response.toString());
+                try {
+                    jsonResponse = new JSONObject(strJson);
+                    int code_id = Integer.parseInt(jsonResponse.optString("code"));
+                    Log.d("code_id", code_id + "");
+                    if (code_id == 200) {
+                        JSONObject json = new JSONObject(jsonResponse.toString());
+                        JSONArray jsonarray = json.getJSONArray("msg");
+                        for (int i = 0; i < jsonarray.length(); i++) {
+                            JSONObject home = jsonarray.getJSONObject(i);
+                            Log.d("res", home.toString());
+                            HinhAnh Home = new HinhAnh();
+                            Log.d("ten", home.optString("ten_phong"));
+                            Home.setTen(home.optString("ten_phong"));
+                            Home.setGia_tien(home.optString("gia_phong"));
+                            Home.setDia_Chi(home.optString("ward_name"));
+                            Home.setURL_hinh(home.optString("ten_anh"));
+                            Home.setId(home.optString("id") + "/");
+                            arrayImage.add(Home);
+
+                        }
+                        if (arrayImage != null) {
+                            adapterHome = new HomeAdapter(arrayImage, getContext());
+                            //adapterHome.getView(arrayImage,null);
+                            gv_nha_tro.setAdapter(adapterHome);
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Kiểm tra lại mạng", Toast.LENGTH_SHORT).show();
+                Log.d("Eror", error.getMessage() + "");
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    @Override
+    public void onStart() {
+        Log.d("fragmentA", "fragmentA: onStart");
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("fragmentA", "fragmentA: onResume");
+        super.onResume();
+    }
+
+
+    @Override
+    public void onStop() {
+        Log.d("fragmentA", "fragmentA: onStop");
+        super.onStop();
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        a = 5;
+        Log.d("fragmentA", "fragmentA: onDestroyView");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("fragmentA", "fragmentA: onDestroy");
+        super.onDestroy();
     }
 
 

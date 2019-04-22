@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBEBEB"
     android:paddingLeft="10dp"
-    android:id="@+id/frame_detail"
     android:paddingRight="10dp"
     tools:context=".ActivitiesAndFragments.HomeDetailFragment">
 
@@ -57,7 +56,8 @@
             android:layout_below="@+id/img_detail"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@+id/txt_name_detail"
-            android:textSize="16dp" />
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_adress"
@@ -93,7 +93,27 @@
             android:layout_toRightOf="@+id/txt_prices"
             android:textSize="16dp" />
 
+        <TextView
+            android:id="@+id/booking"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_prices"
+            android:background="@drawable/vienbutton"
+            android:padding="10dp"
+            android:text="Đặt ngay" />
 
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/booking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_prices"
+            android:background="@drawable/vienbutton"
+            android:padding="10dp"
+            android:text="Chat ngay" />
     </RelativeLayout>
 
 

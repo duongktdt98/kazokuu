@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,29 +24,15 @@ import static com.dtd.tungduong.kazoku.Constants.PreferenceClass.RESTAURANT_NAME
 public class HomeDetailFragment extends Fragment {
     public SharedPreferences dealsDetailPref;
     String name, url, dia_chi, gia_tien;
-    TextView name_detail,back_list_home, diachi;
+    TextView name_detail, back_list_home, diachi;
     ImageView imageView;
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=  inflater.inflate(R.layout.fragment_home_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_home_detail, container, false);
 
 
         dealsDetailPref = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
@@ -62,20 +49,56 @@ public class HomeDetailFragment extends Fragment {
         name_detail.setText(name);
         adress.setText(dia_chi);
         prices.setText(gia_tien);
-        Picasso.with(getContext()).load(url).resize(350,300).into(imageView);
-        final FragmentManager fragmentManager = getFragmentManager();
-        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Picasso.with(getContext()).load(url).resize(350, 300).into(imageView);
+
         back_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    SearchFragment searchFragment = new SearchFragment();
-                    fragmentTransaction.replace(R.id.frame_search, searchFragment);
-                    fragmentTransaction.commit();
-                }
+                final FragmentManager fragmentManager = getFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                SearchFragment searchFragment = new SearchFragment();
+                fragmentTransaction.replace(R.id.frame_container, searchFragment);
+                fragmentTransaction.commit();
+            }
         });
 
         return view;
     }
 
+    @Override
+    public void onStart() {
+        Log.d("fragmentB", "fragmentB: onStart");
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("fragmentB", "fragmentB: onResume");
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        Log.d("fragmentB", "fragmentB: onPause");
+        super.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        Log.d("fragmentB", "fragmentB: onStop");
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.d("fragmentB", "fragmentB: onDestroyView");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("fragmentB", "fragmentB: onDestroy");
+        super.onDestroy();
+    }
 
 }

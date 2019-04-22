@@ -36,6 +36,7 @@ import static com.dtd.tungduong.kazoku.Constants.Config.REGISTERUSER;
 
 public class SignUp extends Fragment {
     ImageView iconback;
+    RelativeLayout progressDialog,transparent_layer;
     EditText ed_fname, ed_sdt, ed_user, ed_password;
     Button btn_signup;
     RadioGroup radioGroupgt;
@@ -56,7 +57,7 @@ public class SignUp extends Fragment {
             @Override
             public void onClick(View v) {
                 LoginFragment loginFragment = new LoginFragment();
-                fragmentTransaction.replace(R.id.frame_login, loginFragment);
+                fragmentTransaction.replace(R.id.frame_container, loginFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -158,9 +159,13 @@ public class SignUp extends Fragment {
         rd_nu = (RadioButton) view.findViewById(R.id.rd_nu);
         signupFb =(RelativeLayout) view.findViewById(R.id.fb_div);
         signupGm =(RelativeLayout) view.findViewById(R.id.google_sign_up_div);
+        progressDialog = view.findViewById(R.id.progressDialog);
+        transparent_layer = view.findViewById(R.id.transparent_layer);
     }
 
     public void registerUser(Editable fname, Editable sdt, Editable usernaeme, Editable password, String gioitinh) {
+        progressDialog.setVisibility(View.VISIBLE);
+        transparent_layer.setVisibility(View.VISIBLE);
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         Log.d("requestQueue", requestQueue.toString());
         JSONObject jsonObject = new JSONObject();
@@ -185,10 +190,14 @@ public class SignUp extends Fragment {
                     int code_id = Integer.parseInt(jsonResponse.optString("code"));
                     Log.d("code_id", code_id + "");
                     if (code_id == 200) {
+                        progressDialog.setVisibility(View.GONE);
+                        transparent_layer.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Bạn đã tạo tài khoản thành công! Mời đăng nhập lại", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getContext(), MainActivity.class));
                         getActivity().finish();
                     } else if (code_id == 201) {
+                        progressDialog.setVisibility(View.GONE);
+                        transparent_layer.setVisibility(View.GONE);
                         Toast.makeText(getContext(), "Tài khoản đã tồn tại, mời đăng nhập!", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
@@ -199,6 +208,8 @@ public class SignUp extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.setVisibility(View.GONE);
+                transparent_layer.setVisibility(View.GONE);
                 Toast.makeText(getContext(), "Kiểm tra kết nối mạng và thử lại!", Toast.LENGTH_SHORT).show();
                 Log.d("Eror", error.getMessage() + "");
             }
