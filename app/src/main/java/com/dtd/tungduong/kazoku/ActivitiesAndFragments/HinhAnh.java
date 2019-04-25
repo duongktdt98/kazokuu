@@ -1,14 +1,32 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 public class HinhAnh {
-    String URL_hinh, Ten, Dia_Chi, Gia_tien, Id;
+    String URL_hinh, Ten, Dia_Chi, Gia_tien, Id, Dien_tich, People;
 
-    public HinhAnh(String URL_hinh,String Ten,String Dia_Chi,String Gia_tien,String Id) {
+    public HinhAnh(String URL_hinh,String Ten,String Dia_Chi,String Gia_tien,String Id, String dientich, String People) {
         this.URL_hinh = URL_hinh;
         this.Ten = Ten;
         this.Dia_Chi = Dia_Chi;
         this.Gia_tien = Gia_tien;
         this.Id = Id;
+        this.Dien_tich = dientich;
+        this.People = People;
+    }
+
+    public String getPeople() {
+        return People;
+    }
+
+    public void setPeople(String people) {
+        People = people;
+    }
+
+    public String getDien_tich() {
+        return Dien_tich;
+    }
+
+    public void setDien_tich(String dien_tich) {
+        Dien_tich = dien_tich;
     }
 
     public String getId() {

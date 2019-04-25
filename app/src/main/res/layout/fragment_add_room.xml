@@ -8,9 +8,9 @@
 
 
     <ScrollView
-        android:layout_marginBottom="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         android:scrollbars="vertical">
 
         <RelativeLayout
@@ -54,41 +54,16 @@
                 android:layout_marginTop="25dp">
 
                 <RelativeLayout
-                    android:id="@+id/div_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/vien"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/txt_name_room"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="22dp"
-                        android:text="Tên phòng: " />
-
-                    <EditText
-                        android:id="@+id/edt_name_room"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_name_room"
-                        android:inputType="text|textNoSuggestions" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
                     android:id="@+id/div_adress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_name"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
-                    android:padding="5dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/txt_adress_room"
+                        android:id="@+id/txt_dientich_room"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -99,7 +74,7 @@
                         android:id="@+id/edt_adress_room"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_adress_room"
+                        android:layout_toRightOf="@id/txt_dientich_room"
                         android:inputType="text|textNoSuggestions" />
                 </RelativeLayout>
 
@@ -108,9 +83,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/div_adress"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
-                    android:padding="5dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/txt_price_room_total"
@@ -140,9 +116,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/div_price_total"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
-                    android:padding="5dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/txt_price_dien"
@@ -173,9 +150,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/div_price_dien"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
-                    android:padding="5dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/txt_price_nuoc"
@@ -205,9 +183,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/div_price_nuoc"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
-                    android:padding="5dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/txt_dien_tich"
@@ -238,9 +217,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/div_dien_tich"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
-                    android:padding="5dp">
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <TextView
                         android:id="@+id/txt_max_people"
@@ -265,23 +245,54 @@
                         android:text="Người" />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/div_max_people">
+
+
+                    <RadioGroup
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/chung_cu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                        <RadioButton
+                            android:text="áđasd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="avc" />
+                </RelativeLayout>
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-50dp"
-                android:layout_toRightOf="@id/txt_title_add_room">
+                android:gravity="end">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_max_people"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/vien"
-                    android:padding="8dp"
+                    android:padding="10dp"
                     android:text="Tiếp" />
-            </LinearLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
 

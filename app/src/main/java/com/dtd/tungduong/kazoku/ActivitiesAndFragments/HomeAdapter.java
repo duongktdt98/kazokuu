@@ -56,6 +56,7 @@ public class HomeAdapter extends BaseAdapter {
         TextView txtname  =(TextView) view.findViewById(R.id.txt_name_home);
         TextView diachi  =(TextView) view.findViewById(R.id.diachi);
         TextView price  =(TextView) view.findViewById(R.id.prices_total);
+        TextView people  =(TextView) view.findViewById(R.id.txt_people_room);
         ImageView imageView = (ImageView) view.findViewById(R.id.image_home);
         txtname.setText(hinhAnhList.get(position).getTen());
         diachi.setText(hinhAnhList.get(position).getDia_Chi());

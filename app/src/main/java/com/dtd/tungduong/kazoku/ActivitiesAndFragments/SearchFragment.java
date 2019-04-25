@@ -3,11 +3,8 @@ package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -30,7 +27,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,10 +73,12 @@ public class SearchFragment extends Fragment {
 
                 try {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(PreferenceClass.RESTAURANT_NAME, arrayImage.get(position).getTen());
-                    editor.putString(PreferenceClass.RESTAURANT_URL, arrayImage.get(position).getURL_hinh());
-                    editor.putString(PreferenceClass.RESTAURANT_ADRESS, arrayImage.get(position).getDia_Chi());
-                    editor.putString(PreferenceClass.RESTAURANT_PRICE, arrayImage.get(position).getGia_tien());
+                    editor.putString(PreferenceClass.HOME_NAME, arrayImage.get(position).getTen());
+                    editor.putString(PreferenceClass.HOME_IMG_URL, arrayImage.get(position).getURL_hinh());
+                    editor.putString(PreferenceClass.HOME_ADRESS, arrayImage.get(position).getDia_Chi());
+                    editor.putString(PreferenceClass.HOME_DIEN_TICH, arrayImage.get(position).getDien_tich());
+                    editor.putString(PreferenceClass.HOME_PEOPLE, arrayImage.get(position).getPeople());
+                    editor.putString(PreferenceClass.HOME_PRICES, arrayImage.get(position).getGia_tien());
                     editor.commit();
 
                 } catch (IndexOutOfBoundsException e) {
@@ -176,7 +174,9 @@ public class SearchFragment extends Fragment {
                             Home.setTen(home.optString("ten_phong"));
                             Home.setGia_tien(home.optString("gia_phong"));
                             Home.setDia_Chi(home.optString("ward_name"));
+                            Home.setDien_tich(home.optString("kich_thuoc"));
                             Home.setURL_hinh(home.optString("ten_anh"));
+                            Home.setPeople(home.optString("so_nguoi"));
                             Home.setId(home.optString("id") + "/");
                             arrayImage.add(Home);
 
