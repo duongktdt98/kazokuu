@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".ActivitiesAndFragments.AddRoomFragment">
+    tools:context=".ActivitiesAndFragments.AddRoomFragment2">
 
 
     <ScrollView
@@ -44,7 +44,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="23dp"
                 android:layout_toRightOf="@id/img_key"
-                android:text="Nhập thông tin phòng: "
+                android:text="Nhập thông tin chi tiết: "
                 android:textStyle="italic" />
 
             <RelativeLayout
@@ -54,35 +54,9 @@
                 android:layout_marginTop="25dp">
 
                 <RelativeLayout
-                    android:id="@+id/div_adress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/vien"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
-
-                    <TextView
-                        android:id="@+id/txt_dientich_room"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="25dp"
-                        android:text="Địa chỉ: " />
-
-                    <EditText
-                        android:id="@+id/edt_adress_room"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_dientich_room"
-                        android:inputType="text|textNoSuggestions" />
-                </RelativeLayout>
-
-                <RelativeLayout
                     android:id="@+id/div_price_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_adress"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
                     android:paddingLeft="10dp"
@@ -252,34 +226,43 @@
 
 
                     <RadioGroup
+                        android:gravity="center"
                         android:orientation="horizontal"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <RadioButton
+                            android:gravity="center"
                             android:id="@+id/chung_cu"
-                            android:layout_width="match_parent"
+                            android:text="Chung Cư"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <RadioButton
+                            android:gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:text="Căn Hộ"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             />
 
                         <RadioButton
-                            android:text="áđasd"
+                            android:gravity="center"
+                            android:layout_marginLeft="20dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="Nhà Trọ" />
                     </RadioGroup>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="avc" />
                 </RelativeLayout>
 
             </RelativeLayout>
-
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/back_add1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_arrow_back_black_24dp"
+                />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -292,6 +275,7 @@
                     android:background="@drawable/vien"
                     android:padding="10dp"
                     android:text="Tiếp" />
+
             </RelativeLayout>
 
         </RelativeLayout>

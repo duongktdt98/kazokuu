@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ import static android.support.constraint.Constraints.TAG;
 import static com.dtd.tungduong.kazoku.Constants.Config.LIST_HOME;
 
 public class SearchFragment extends Fragment {
+    RelativeLayout progressDialog,transparent_layer;
     TextView btn;
     TextView txt;
     ImageView img;
@@ -58,9 +60,11 @@ public class SearchFragment extends Fragment {
         AnhXa(view);
 
         //   ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayStrings);
-
+        progressDialog.setVisibility(View.VISIBLE);
+        transparent_layer.setVisibility(View.VISIBLE);
         //     gv_nha_tro.setAdapter(arrayAdapter);
         arrayImage = new ArrayList<>();
+
         DataArrayList();
 
 
@@ -146,6 +150,8 @@ public class SearchFragment extends Fragment {
         btn = (TextView) view.findViewById(R.id.btn_search_kv);
         gv_nha_tro = (GridView) view.findViewById(R.id.gv_nha_tro);
         ImageView image_home = (ImageView) view.findViewById(R.id.image_home);
+        progressDialog = view.findViewById(R.id.progressDialog);
+        transparent_layer = view.findViewById(R.id.transparent_layer);
     }
 
     public void DataArrayList() {
@@ -184,6 +190,8 @@ public class SearchFragment extends Fragment {
                         if (arrayImage != null) {
                             adapterHome = new HomeAdapter(arrayImage, getContext());
                             //adapterHome.getView(arrayImage,null);
+                            progressDialog.setVisibility(View.GONE);
+                            transparent_layer.setVisibility(View.GONE);
                             gv_nha_tro.setAdapter(adapterHome);
                         }
                     }
@@ -195,6 +203,8 @@ public class SearchFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), "Kiểm tra lại mạng", Toast.LENGTH_SHORT).show();
+                progressDialog.setVisibility(View.GONE);
+                transparent_layer.setVisibility(View.GONE);
                 Log.d("Eror", error.getMessage() + "");
             }
         });

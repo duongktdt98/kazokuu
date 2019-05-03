@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class UserAccount extends Fragment {
     //public boolean LOGIN = false;
     TextView txthoten;
+
     SharedPreferences sharedPreferences;
     private RelativeLayout activity_user__account, fragment_not_login;
     RelativeLayout div_log_out, hotline_div, user_name, room_you_rent, room_for_rent;
@@ -34,10 +37,8 @@ String hoten;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user__account, container, false);
-        div_log_out = (RelativeLayout) view.findViewById(R.id.log_out_div);
-        hotline_div = (RelativeLayout) view.findViewById(R.id.hotline_div);
-        user_name = (RelativeLayout) view.findViewById(R.id.user_name_div);
-        txthoten = (TextView) view.findViewById(R.id.user_name);
+      Anhxa(view);
+
         // Inflate the layout for this fragment
         sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, MODE_PRIVATE);
         // checkLogInSession();
@@ -49,8 +50,41 @@ String hoten;
                 showDialogLogout();
             }
         });
+
+        room_for_rent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final FragmentManager fragmentManager = getFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Room_for_rent room_for_rent = new Room_for_rent();
+                fragmentTransaction.replace(R.id.frame_container, room_for_rent);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+        room_you_rent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final FragmentManager fragmentManager = getFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Room_you_rent room_you_rent = new Room_you_rent();
+                fragmentTransaction.replace(R.id.frame_container, room_you_rent);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
         Init(view);
         return view;
+    }
+
+    private void Anhxa(View view) {
+        div_log_out = (RelativeLayout) view.findViewById(R.id.log_out_div);
+        hotline_div = (RelativeLayout) view.findViewById(R.id.hotline_div);
+        user_name = (RelativeLayout) view.findViewById(R.id.user_name_div);
+        txthoten = (TextView) view.findViewById(R.id.user_name);
+        room_for_rent = (RelativeLayout) view.findViewById(R.id.room_for_rent);
+        room_you_rent = (RelativeLayout) view.findViewById(R.id.room_you_rent);
     }
 
     public void onResume() {

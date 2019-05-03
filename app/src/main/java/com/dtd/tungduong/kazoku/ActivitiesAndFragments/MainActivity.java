@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_add_home:
-                    fragment = new AddRoomFragment();
+                    fragment = new AddRoom1();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_login:

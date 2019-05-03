@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/image_list_rent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/image_list_rent"
+            android:text="Phòng trọ tại xóm 1"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txt_gia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/image_list_rent"
+            android:text="1000000đ" />
+
+        <TextView
+            android:id="@+id/txt_loaiphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/txt_gia"
+            android:text="Chung Cư" />
+        <TextView
+            android:id="@+id/txt_creat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="03/02/2019"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/txt_gia"/>
+
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/vienbutton"
+                android:gravity="end"
+                android:padding="10dp"
+                android:text="Xem Thêm" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>
