@@ -36,6 +36,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static com.dtd.tungduong.kazoku.Constants.Config.LOGIN_URL;
+import static com.dtd.tungduong.kazoku.Constants.PreferenceClass.USER_ID;
 
 @SuppressLint("ValidFragment")
 public class LoginFragment extends Fragment {
@@ -139,6 +140,7 @@ public class LoginFragment extends Fragment {
                         Toast.makeText(getContext(), "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("taikhoan", username);
+                        editor.putString(USER_ID, resultObj.optString("id"));
                         editor.putString("matkhau", username);
                         editor.putString("hoten", resultObj.optString("hoten"));
                         editor.putBoolean(PreferenceClass.IS_LOGIN, true);

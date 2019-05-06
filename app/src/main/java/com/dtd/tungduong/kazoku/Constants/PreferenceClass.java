@@ -11,7 +11,7 @@ public class PreferenceClass {
     public static final  String pre_first = "pre_first";
     public static final  String pre_last = "pre_last";
     public static final  String IS_LOGIN = "isLogIN";
-    public static final String ADMIN_USER_ID = "adminID";
+    public static final String USER_ID = "userID";
     public static final String ADMIN_PHONE_NUMBER= "adminPhone";
     public static final String TIMING_ID = "timingID";
     public static final String CURRENT_LOCATION_LAT_LONG = "currentLocationLATLONG";
@@ -40,11 +40,16 @@ public class PreferenceClass {
 
     public static final String HOME_NAME = "homName";
     public static final String HOME_IMG_URL = "homtUrl";
-    public static final String RESTAURANT_ID = "homID";
+    public static final String HOME_ID = "homeID";
     public static final String HOME_ADRESS = "homAdress";
     public static final String HOME_DIEN_TICH = "Dientich";
     public static final String HOME_PRICES = "homePrice";
     public static final String HOME_PEOPLE = "homePeople";
+
+
+
+    public static final String DATE_SHOW = "showHOME";
+
 
 
 

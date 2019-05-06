@@ -78,6 +78,7 @@ public class SearchFragment extends Fragment {
                 try {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(PreferenceClass.HOME_NAME, arrayImage.get(position).getTen());
+                    editor.putString(PreferenceClass.HOME_ID, arrayImage.get(position).getId());
                     editor.putString(PreferenceClass.HOME_IMG_URL, arrayImage.get(position).getURL_hinh());
                     editor.putString(PreferenceClass.HOME_ADRESS, arrayImage.get(position).getDia_Chi());
                     editor.putString(PreferenceClass.HOME_DIEN_TICH, arrayImage.get(position).getDien_tich());
@@ -183,7 +184,7 @@ public class SearchFragment extends Fragment {
                             Home.setDien_tich(home.optString("kich_thuoc"));
                             Home.setURL_hinh(home.optString("ten_anh"));
                             Home.setPeople(home.optString("so_nguoi"));
-                            Home.setId(home.optString("id") + "/");
+                            Home.setId(home.optString("id") );
                             arrayImage.add(Home);
 
                         }

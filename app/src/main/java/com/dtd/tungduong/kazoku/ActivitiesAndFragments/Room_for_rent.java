@@ -98,7 +98,7 @@ public class Room_for_rent extends Fragment {
                             Home.setLoaiphong(home.optString("loai_phong"));
                             Home.setURL_hinh(home.optString("ten_anh"));
                             Home.setNgaytao(home.optString("created"));
-                            Home.setId(home.optString("id") + "/");
+                            Home.setId(home.optString("id") );
                             array_for_rent.add(Home);
 
                         }

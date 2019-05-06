@@ -24,7 +24,7 @@ import static com.dtd.tungduong.kazoku.Constants.Config.imgBaseURL;
 public class HomeDetailFragment extends Fragment {
     public SharedPreferences dealsDetailPref;
     String name, url, dientich, gia_tien, songuoi;
-    TextView name_detail, back_list_home, diachi;
+    TextView name_detail, back_list_home, diachi, booking_now;
     ImageView imageView;
     ViewFlipper viewFlipper;
 
@@ -49,6 +49,7 @@ public class HomeDetailFragment extends Fragment {
         TextView back_list = (TextView) view.findViewById(R.id.back_list_home);
         TextView prices = (TextView) view.findViewById(R.id.txt_prices_room);
         TextView people = (TextView) view.findViewById(R.id.txt_people_room);
+        booking_now = (TextView) view.findViewById(R.id.booking);
         name_detail.setText(name);
         adress.setText(dientich);
         people.setText(songuoi);
@@ -73,6 +74,18 @@ public class HomeDetailFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+        booking_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final FragmentManager fragmentManager = getFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Booking_home_Frame booking_home_frame = new Booking_home_Frame();
+                fragmentTransaction.replace(R.id.frame_container, booking_home_frame);
+                fragmentTransaction.commit();
+            }
+        });
+
 
         return view;
     }

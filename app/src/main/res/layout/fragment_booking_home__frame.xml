@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".ActivitiesAndFragments.AddRoomFragment2">
-
+    tools:context=".ActivitiesAndFragments.Booking_home_Frame">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:gravity="center_horizontal"
-                android:text="Đăng phòng trọ của bạn!"
+                android:text="Gửi yêu cầu đặt phòng"
                 android:textSize="20dp" />
 
             <ImageView
@@ -44,7 +42,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="23dp"
                 android:layout_toRightOf="@id/img_key"
-                android:text="Nhập thông tin chi tiết: "
+                android:text="Nhập thông tin cơ bản: "
                 android:textStyle="italic" />
 
             <RelativeLayout
@@ -67,26 +65,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Giá phòng: " />
+                        android:text="Số điện thoại: " />
 
                     <EditText
-                        android:id="@+id/edt_price_room"
+                        android:id="@+id/edt_sdt"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/txt_price_room_total"
-                        android:inputType="number" />
+                        android:inputType="number"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-60dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_toRightOf="@id/edt_price_room"
-                        android:text="/ Tháng" />
+
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/div_price_dien"
+                    android:id="@+id/div_songuoi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/div_price_total"
@@ -100,169 +92,113 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Giá điện: " />
+                        android:text="Số người muốn thuê: " />
 
                     <EditText
-                        android:id="@+id/edt_price_dien"
+                        android:id="@+id/edit_people_rent"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@id/txt_price_dien"
-                        android:inputType="number" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-60dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_toRightOf="@id/edt_price_dien"
-                        android:text="/ Tháng" />
+                        android:inputType="number"/>
 
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/div_price_nuoc"
+                    android:id="@+id/div_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_price_dien"
+                    android:layout_below="@id/div_songuoi"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/txt_price_nuoc"
+                        android:id="@+id/txt_chon_ngay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Giá nước: " />
+                        android:text="Chọn ngày xem nhà: " />
 
                     <EditText
-                        android:id="@+id/edt_price_nuoc"
+                        android:hint="Chọn ngày"
+                        android:id="@+id/edt_chon_ngay"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_price_nuoc"
-                        android:inputType="number" />
+                        android:layout_toRightOf="@id/txt_chon_ngay"
+                        android:inputType="text|textNoSuggestions" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-60dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_toRightOf="@id/edt_price_nuoc"
-                        android:text="/ Tháng" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/div_dien_tich"
+                    android:id="@+id/div_current_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_price_nuoc"
+                    android:layout_below="@id/div_day"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/txt_dien_tich"
+                        android:id="@+id/txt_curent_day"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Diện tích: " />
+                        android:text="Ngày đăng ký đặt: " />
 
                     <EditText
-                        android:id="@+id/edt_dien_dich"
+                        android:clickable="false"
+                        android:hint="Chọn ngày"
+                        android:id="@+id/edt_current_day"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_dien_tich"
-                        android:inputType="number" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-50dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_toRightOf="@id/edt_dien_dich"
-                        android:text="m²" />
+                        android:layout_toRightOf="@id/txt_curent_day"
+                        android:inputType="text|textNoSuggestions" />
 
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/div_max_people"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/div_dien_tich"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/vien"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                <RadioGroup
+                    android:id="@+id/radio_gr"
+                    android:layout_below="@id/div_current_day"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/txt_max_people"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Số người tối đa: " />
-
-                    <EditText
-                        android:id="@+id/edt_max_people"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_max_people"
-                        android:inputType="number" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="-60dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_toRightOf="@id/edt_max_people"
-                        android:text="Người" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/div_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/div_max_people">
-
-
-                    <RadioGroup
+                    <RadioButton
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:id="@+id/r_nam"
+                        android:text="Nam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
 
-                        <RadioButton
-                            android:gravity="center"
-                            android:id="@+id/chung_cu"
-                            android:text="Chung Cư"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:id="@+id/r_nu"
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:text="Nũ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
 
-                        <RadioButton
-                            android:gravity="center"
-                            android:layout_marginLeft="20dp"
-                            android:text="Căn Hộ"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
+                    <RadioButton
+                        android:id="@+id/r_both"
+                        android:gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tất cả" />
+                </RadioGroup>
 
-                        <RadioButton
-                            android:gravity="center"
-                            android:layout_marginLeft="20dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Nhà Trọ" />
-                    </RadioGroup>
-                </RelativeLayout>
                 <RelativeLayout
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_radio">
+                    android:layout_below="@id/radio_gr">
 
                     <TextView
-                        android:id="@+id/add_form3"
+                        android:id="@+id/booking_now"
                         android:background="@drawable/vienbutton"
                         android:gravity="center"
                         android:padding="20dp"
@@ -271,19 +207,13 @@
                         android:layout_height="wrap_content"
                         android:text="Tiếp theo" />
                 </RelativeLayout>
+
             </RelativeLayout>
-            <TextView
-                android:layout_marginTop="10dp"
-                android:id="@+id/back_add1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/ic_arrow_back_black_24dp"
-                />
+
 
 
         </RelativeLayout>
 
     </ScrollView>
-
 
 </FrameLayout>

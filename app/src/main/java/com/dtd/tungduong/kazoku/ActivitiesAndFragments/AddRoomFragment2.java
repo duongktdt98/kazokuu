@@ -13,7 +13,7 @@ import com.dtd.tungduong.kazoku.R;
 
 
 public class AddRoomFragment2 extends Fragment  {
-   TextView btn_back;
+   TextView btn_back, add_room3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,12 +33,23 @@ public class AddRoomFragment2 extends Fragment  {
             }
         });
 
-
+        add_room3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final FragmentManager fragmentManager = getFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                AddRoom3Frame add3 = new AddRoom3Frame();
+                fragmentTransaction.replace(R.id.frame_container, add3);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 
     private void Anhxa(View view) {
         btn_back =(TextView) view.findViewById(R.id.back_add1);
+        add_room3 =(TextView) view.findViewById(R.id.add_form3);
 
     }
 
