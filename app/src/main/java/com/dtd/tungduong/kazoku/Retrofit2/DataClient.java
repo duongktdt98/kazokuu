@@ -10,5 +10,5 @@ public interface DataClient {
 
     @Multipart
     @POST("luuanh.php")
-    Call<String> UploadImg(@Part MultipartBody.Part photo);
+    Call<Object> UploadImg(@Part MultipartBody.Part photo);
  }

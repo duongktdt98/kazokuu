@@ -32,7 +32,7 @@ public class AddRoom1 extends Fragment {
                 final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 AddRoomFragment2 add2 = new AddRoomFragment2();
                 fragmentTransaction.replace(R.id.frame_container, add2);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("Add1");
                 fragmentTransaction.commit();
             }
         });

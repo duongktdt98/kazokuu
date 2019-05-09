@@ -24,12 +24,8 @@ public class AddRoomFragment2 extends Fragment  {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final FragmentManager fragmentManager = getFragmentManager();
-                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                AddRoom1 addRoom1 = new AddRoom1();
-                fragmentTransaction.replace(R.id.frame_container, addRoom1);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                getFragmentManager().popBackStack();
+
             }
         });
 
@@ -40,7 +36,7 @@ public class AddRoomFragment2 extends Fragment  {
                 final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 AddRoom3Frame add3 = new AddRoom3Frame();
                 fragmentTransaction.replace(R.id.frame_container, add3);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("Add2");
                 fragmentTransaction.commit();
             }
         });
