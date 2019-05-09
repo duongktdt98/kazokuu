@@ -55,10 +55,8 @@ public class AddRoom3Frame extends Fragment {
             @Override
             public void onClick(View v) {
                 checkPermistion();
-                Intent intent = new Intent();
+                Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, Request_Code_Image);
             }
         });
