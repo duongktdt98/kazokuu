@@ -80,6 +80,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:padding="11dp"
                     android:id="@+id/div_price_dien"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,15 +94,15 @@
                         android:id="@+id/txt_price_dien"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:text="Tên Thành Phố: " />
 
-                    <EditText
-                        android:id="@+id/edt_city"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                    <Spinner
                         android:layout_toRightOf="@id/txt_price_dien"
-                        android:inputType="text|textNoSuggestions" />
+                        android:id="@+id/spinnercity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
 
                 </RelativeLayout>
 
@@ -210,6 +211,8 @@
         </RelativeLayout>
 
     </ScrollView>
+
+
 
 
 </FrameLayout>
