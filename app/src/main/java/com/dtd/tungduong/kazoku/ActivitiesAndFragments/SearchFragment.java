@@ -59,10 +59,8 @@ public class SearchFragment extends Fragment {
 
         AnhXa(view);
 
-        //   ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayStrings);
         progressDialog.setVisibility(View.VISIBLE);
         transparent_layer.setVisibility(View.VISIBLE);
-        //     gv_nha_tro.setAdapter(arrayAdapter);
         arrayImage = new ArrayList<>();
 
         DataArrayList();
@@ -207,6 +205,7 @@ public class SearchFragment extends Fragment {
                 progressDialog.setVisibility(View.GONE);
                 transparent_layer.setVisibility(View.GONE);
                 Log.d("Eror", error.getMessage() + "");
+                Log.e("Eror", error.toString());
             }
         });
         requestQueue.add(jsonObjectRequest);

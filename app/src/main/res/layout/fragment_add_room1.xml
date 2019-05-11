@@ -67,9 +67,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Tên Phòng: " />
+                        android:text="Tên Phòng: "
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_name_room"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -80,13 +82,13 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:padding="11dp"
                     android:id="@+id/div_price_dien"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/div_price_total"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
+                    android:padding="11dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
@@ -94,15 +96,19 @@
                         android:id="@+id/txt_price_dien"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_marginTop="0dp"
-                        android:text="Tên Thành Phố: " />
+                        android:text="Tên Thành Phố: "
+                        android:textStyle="bold" />
 
                     <Spinner
-                        android:layout_toRightOf="@id/txt_price_dien"
-                        android:id="@+id/spinnercity"
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/spinnerProvince"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        />
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/txt_price_dien"
+                        android:gravity="center" />
 
                 </RelativeLayout>
 
@@ -113,6 +119,7 @@
                     android:layout_below="@id/div_price_dien"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
+                    android:padding="11dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
@@ -120,15 +127,16 @@
                         android:id="@+id/txt_price_nuoc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Tên Quận/Huyện: " />
+                        android:layout_centerVertical="true"
+                        android:text="Tên Quận/Huyện: "
+                        android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/edt_thanh_pho"
-                        android:layout_width="fill_parent"
+                    <Spinner
+                        android:id="@+id/spinnerDistrict"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_price_nuoc"
-                        android:inputType="text|textNoSuggestions" />
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/txt_price_nuoc" />
 
 
                 </RelativeLayout>
@@ -140,22 +148,24 @@
                     android:layout_below="@id/div_price_nuoc"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
+                    android:padding="11dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
                     <TextView
-                        android:id="@+id/txt_dien_tich"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/txt_Xa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Phường / Xã: " />
+                        android:text="Phường / Xã: "
+                        android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/edt_phuong_xa"
-                        android:layout_width="fill_parent"
+                    <Spinner
+                        android:layout_centerVertical="true"
+                        android:id="@+id/spinnerWard"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/txt_dien_tich"
-                        android:inputType="text|textNoSuggestions" />
+                        android:layout_toRightOf="@id/txt_Xa" />
 
 
                 </RelativeLayout>
@@ -175,9 +185,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="Số Đường + Số nhà" />
+                        android:text="Số Đường + Số nhà: "
+                        android:textStyle="bold" />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_so_nha"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -188,31 +200,28 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_max_people">
+                    android:layout_below="@id/div_max_people"
+                    android:layout_marginTop="20dp">
 
                     <TextView
                         android:id="@+id/add_form2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/vienbutton"
                         android:gravity="center"
                         android:padding="20dp"
-                        android:textSize="20dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tiếp theo" />
+                        android:text="Tiếp theo"
+                        android:textSize="20dp" />
                 </RelativeLayout>
 
             </RelativeLayout>
 
 
-
         </RelativeLayout>
 
     </ScrollView>
-
-
 
 
 </FrameLayout>

@@ -70,6 +70,7 @@
                         android:text="Giá phòng: " />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_price_room"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -84,12 +85,45 @@
                         android:layout_toRightOf="@id/edt_price_room"
                         android:text="/ Tháng" />
                 </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/div_price_coc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/div_price_total"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/vien"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/txt_price_coc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Đặt cọc: " />
+
+                    <EditText
+                        android:gravity="center"
+                        android:id="@+id/edt_price_coc"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/txt_price_coc"
+                        android:inputType="number" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="-60dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toRightOf="@id/edt_price_coc"
+                        android:text="/ Tháng" />
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/div_price_dien"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/div_price_total"
+                    android:layout_below="@id/div_price_coc"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/vien"
                     android:paddingLeft="10dp"
@@ -103,6 +137,7 @@
                         android:text="Giá điện: " />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_price_dien"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -137,6 +172,7 @@
                         android:text="Giá nước: " />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_price_nuoc"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -170,6 +206,7 @@
                         android:text="Diện tích: " />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_dien_dich"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -182,7 +219,7 @@
                         android:layout_marginLeft="-50dp"
                         android:layout_marginTop="15dp"
                         android:layout_toRightOf="@id/edt_dien_dich"
-                        android:text="m²" />
+                        android:text="m³" />
 
                 </RelativeLayout>
 
@@ -204,6 +241,7 @@
                         android:text="Số người tối đa: " />
 
                     <EditText
+                        android:gravity="center"
                         android:id="@+id/edt_max_people"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -227,6 +265,7 @@
 
 
                     <RadioGroup
+                        android:id="@+id/rd_loaiphong"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
@@ -234,12 +273,13 @@
 
                         <RadioButton
                             android:gravity="center"
-                            android:id="@+id/chung_cu"
+                            android:id="@+id/rd_chung_cu"
                             android:text="Chung Cư"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <RadioButton
+                            android:id="@+id/rd_can_ho"
                             android:gravity="center"
                             android:layout_marginLeft="20dp"
                             android:text="Căn Hộ"
@@ -248,6 +288,7 @@
                             />
 
                         <RadioButton
+                            android:id="@+id/rd_nha_tro"
                             android:gravity="center"
                             android:layout_marginLeft="20dp"
                             android:layout_width="wrap_content"
