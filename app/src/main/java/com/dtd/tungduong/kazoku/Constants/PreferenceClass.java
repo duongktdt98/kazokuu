@@ -58,6 +58,7 @@ public class PreferenceClass {
     public static final String POST_PRICES_DIEN = "homePostPriceCoc";
     public static final String POST_PRICES_NUOC = "homePostPriceCoc";
     public static final String POST_PEOPLE = "homePostPeople";
+    public static final String POST_CSVC = "homePostCsvc";
 
     public static final String POST_TYPE_HOME = "homePostType";
 
