@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(fragment);
                         return true;
                     } else {
-                        Toast.makeText(MainActivity.this, "Mời bạn đăng nhập trước !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Mời bạn đăng nhập trước khi đăng phòng!", Toast.LENGTH_SHORT).show();
                         fragment = new LoginFragment();
                         loadFragment(fragment);
                         return true;

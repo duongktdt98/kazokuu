@@ -73,8 +73,26 @@ public class GridCsvcAdapter extends BaseAdapter {
                     }else {
                         csvc = csvc +" " + hinhAnhList.get(position).getId_csvc();
                     }
+                } else {
+                    if (csvc != "" || csvc != null ){
+                        String[] output = csvc.split("\\s");
+                        String csvcUncheck = "";
+                        for (int k = 0; k< output.length; k++){
 
+                            if (!output[k].equals(hinhAnhList.get(position).getId_csvc())){
+                                if (csvcUncheck == "" || csvcUncheck == null){
+                                    csvcUncheck = output[k];
+
+                                }else {
+                                    csvcUncheck = csvcUncheck +" " + output[k];
+                                }
+                            }
+                        }
+                        csvc = csvcUncheck;
+
+                    }
                 }
+             //   Toast.makeText(context, csvc, Toast.LENGTH_SHORT).show();
                 editor.putString(PreferenceClass.POST_CSVC , csvc);
                 editor.commit();
             }
