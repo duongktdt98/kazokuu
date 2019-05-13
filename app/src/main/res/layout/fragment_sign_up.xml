@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorAccent"
     tools:context=".ActivitiesAndFragments.SignUp">
 
@@ -87,7 +88,7 @@
                 android:fontFamily="font/verdana.ttf"
                 android:hint="0123456789"
                 android:imeOptions="actionNext"
-                android:inputType="textWebEmailAddress"
+                android:inputType="number"
                 android:paddingLeft="10dp"
                 android:textSize="14sp" />
 
@@ -276,5 +277,28 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/transparent_layer"
+        android:visibility="gone"
+        android:background="@color/transparent_tint">
 
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:id="@+id/progressDialog"
+        android:visibility="gone"
+        android:background="@drawable/dialog"
+        >
+        <com.gmail.samehadar.iosdialog.CamomileSpinner
+            android:id="@+id/logInProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:spinnerColor="@color/colorRed"
+            />
+    </RelativeLayout>
 </FrameLayout>

@@ -65,10 +65,19 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_add_home:
-                    fragment = new AddRoomFragment();
-                    loadFragment(fragment);
-                    return true;
-                case R.id.navigation_login:
+                    mSharedPreferences = getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+                    boolean getLoginSession2 = mSharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
+                    if (getLoginSession2){
+                        fragment = new AddRoom1();
+                        loadFragment(fragment);
+                        return true;
+                    } else {
+                        Toast.makeText(MainActivity.this, "Mời bạn đăng nhập trước !", Toast.LENGTH_SHORT).show();
+                        fragment = new LoginFragment();
+                        loadFragment(fragment);
+                        return true;
+                    }
+                    case R.id.navigation_login:
                     mSharedPreferences = getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
                     boolean getLoginSession = mSharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
                     if (getLoginSession){
