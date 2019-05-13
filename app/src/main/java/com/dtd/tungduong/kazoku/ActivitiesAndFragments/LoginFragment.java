@@ -135,9 +135,10 @@ public class LoginFragment extends Fragment {
                         JSONObject resultObj = json.getJSONObject("msg");
                         Log.d("resultObj", resultObj.toString());
                         Log.d("resultObj", resultObj.optString("hoten"));
+
+                        Toast.makeText(getContext(), "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                         progressDialog.setVisibility(View.GONE);
                         transparent_layer.setVisibility(View.GONE);
-                        Toast.makeText(getContext(), "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("taikhoan", username);
                         editor.putString(USER_ID, resultObj.optString("id"));

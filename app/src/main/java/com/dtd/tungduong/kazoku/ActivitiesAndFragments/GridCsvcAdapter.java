@@ -69,15 +69,14 @@ public class GridCsvcAdapter extends BaseAdapter {
                 if (isChecked == true) {
                     if (csvc == "" || csvc == null){
                         csvc = hinhAnhList.get(position).getId_csvc();
-                        editor.putString(PreferenceClass.POST_CSVC , csvc);
-                        editor.commit();
+
                     }else {
                         csvc = csvc +" " + hinhAnhList.get(position).getId_csvc();
-                        editor.putString(PreferenceClass.POST_CSVC , csvc);
-                        editor.commit();
                     }
 
                 }
+                editor.putString(PreferenceClass.POST_CSVC , csvc);
+                editor.commit();
             }
         });
 

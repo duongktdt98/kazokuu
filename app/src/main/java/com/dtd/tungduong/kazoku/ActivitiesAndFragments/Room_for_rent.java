@@ -1,6 +1,7 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.dtd.tungduong.kazoku.Constants.PreferenceClass;
 import com.dtd.tungduong.kazoku.R;
 
 import org.json.JSONArray;
@@ -35,6 +37,7 @@ import static com.dtd.tungduong.kazoku.Constants.Config.LIST_HOME;
 public class Room_for_rent extends Fragment {
     ListView lv_for_rent;
     ArrayList<HinhAnh> array_for_rent;
+    SharedPreferences sharedPreferences;
     Adapter_for_rent adapterHome;
     RelativeLayout progressDialog,transparent_layer;
     TextView back_icon;
@@ -72,8 +75,18 @@ public class Room_for_rent extends Fragment {
 
     public void DataArrayList() {
 
+        sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+        String id_user = sharedPreferences.getString(PreferenceClass.USER_ID,"");
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("id_user", id_user);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.d("XCV", jsonObject.toString());
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, LIST_FOR_RENT, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, LIST_FOR_RENT, jsonObject, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {

@@ -153,9 +153,7 @@ public class AddRoom3Frame extends Fragment {
             public void onClick(View v) {
 
                 File file = new File(realpath);
-                Log.d("anh", file.getName());
                 String file_path = file.getAbsolutePath();
-                Log.d("anh", file_path);
                 if (file_path != null || file_path != "") {
                     String[] mangtenfile = file_path.split("\\.");
                     file_path = mangtenfile[0] + System.currentTimeMillis() + "." + mangtenfile[1];
