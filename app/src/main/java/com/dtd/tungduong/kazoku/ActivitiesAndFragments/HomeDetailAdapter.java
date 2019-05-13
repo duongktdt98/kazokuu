@@ -46,7 +46,7 @@ public class HomeDetailAdapter extends BaseAdapter {
        // TextView txtname  =(TextView) view.findViewById(R.id.txt_name_home);
         ImageView imageView = (ImageView) view.findViewById(R.id.img_detail);
         //txtname.setText(hinhAnhList.get(position).getTen());
-       Picasso.with(context).load(hinhAnhList.get(position).getURL_hinh()).resize(150, 150).into(imageView);
+       Picasso.with(context).load(hinhAnhList.get(position).getURL_hinh()).resize(350, 180).into(imageView);
 //        Glide.with(context).load(hinhAnhList.get(position)
 //                .getURL_hinh())
 ////                .placeholder(R.drawable.load)
