@@ -245,7 +245,7 @@ public class AddRoom3Frame extends Fragment {
                                 int code_id = Integer.parseInt(jsonResponse.optString("code"));
                                 Log.d("code_id", code_id + "");
                                 if (code_id == 200) {
-                                    Toast.makeText(getContext(), "Chúc Mừng bạn đã đang phòng thành công", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Bạn đã đăng phòng thành công. Xin chờ xét duyệt !", Toast.LENGTH_LONG).show();
                                     startActivity(new Intent(getContext(), MainActivity.class));
                                     getActivity().finish();
                                 }
