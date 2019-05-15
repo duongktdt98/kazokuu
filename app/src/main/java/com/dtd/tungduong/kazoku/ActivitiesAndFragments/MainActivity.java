@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     mSharedPreferences = getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
                     boolean getLoginSession2 = mSharedPreferences.getBoolean(PreferenceClass.IS_LOGIN, false);
                     if (getLoginSession2){
-                        fragment = new AddRoom1();
+                        fragment = new AddRoom3Frame();
                         loadFragment(fragment);
                         return true;
                     } else {

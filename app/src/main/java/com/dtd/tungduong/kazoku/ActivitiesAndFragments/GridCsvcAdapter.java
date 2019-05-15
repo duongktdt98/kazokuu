@@ -2,6 +2,8 @@ package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +55,8 @@ public class GridCsvcAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = layoutInflater.inflate(R.layout.dong_csvc, null);
-        CheckBox txtcsvc = (CheckBox) convertView.findViewById(R.id.checkboxname);
+        final CheckBox txtcsvc = (CheckBox) convertView.findViewById(R.id.checkboxname);
+        final RelativeLayout div_check = (RelativeLayout) convertView.findViewById(R.id.div_check);
         ImageView img_csvc = (ImageView) convertView.findViewById(R.id.image_csvc);
 
 
@@ -67,6 +71,9 @@ public class GridCsvcAdapter extends BaseAdapter {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 if (isChecked == true) {
+                    Drawable background = context.getResources().getDrawable(R.drawable.vienwhite);
+                    div_check.setBackground(background);
+                    txtcsvc.setTextColor(Color.parseColor("#0052FF"));
                     if (csvc == "" || csvc == null){
                         csvc = hinhAnhList.get(position).getId_csvc();
 
@@ -74,6 +81,9 @@ public class GridCsvcAdapter extends BaseAdapter {
                         csvc = csvc +" " + hinhAnhList.get(position).getId_csvc();
                     }
                 } else {
+                    Drawable background = context.getResources().getDrawable(R.drawable.vien);
+                    div_check.setBackground(background);
+                    txtcsvc.setTextColor(Color.parseColor("#000000"));
                     if (csvc != "" || csvc != null ){
                         String[] output = csvc.split("\\s");
                         String csvcUncheck = "";

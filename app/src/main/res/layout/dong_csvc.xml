@@ -2,30 +2,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    >
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_margin="5dp"
-        android:background="@drawable/vien"
+        android:id="@+id/div_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/vien"
         android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:paddingRight="-5dp">
+        android:paddingRight="-5dp"
+
+        android:paddingBottom="4dp">
+
         <CheckBox
             android:id="@+id/checkboxname"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Câu 1"/>
+            android:layout_centerVertical="true"
+            android:button="@drawable/customcheck"
+            android:paddingLeft="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="Câu 1"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/image_csvc"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="-40dp"
-            android:layout_toRightOf="@id/checkboxname"/>
+            android:layout_toRightOf="@id/checkboxname" />
     </RelativeLayout>
 </RelativeLayout>

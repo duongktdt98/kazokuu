@@ -17,8 +17,9 @@
         android:layout_marginBottom="5dp"/>
 
     <TextView
-        android:textStyle="bold"
+
         android:textSize="14dp"
+        android:fontFamily="@font/abril_fatface"
         android:id="@+id/txt_name_home"
         android:layout_gravity="center"
         android:layout_width="150dp"

@@ -4,14 +4,13 @@
     android:id="@+id/frame_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
     tools:context=".ActivitiesAndFragments.HomeDetailFragment">
 
     <TextView
         android:id="@+id/txt_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:gravity="center_horizontal"
         android:text="Chi tiết phòng trọ"
         android:textSize="20dp" />
@@ -29,131 +28,202 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp">
 
-        <ImageView
-            android:id="@+id/img_detail"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="100dp"
-            android:layout_marginBottom="20dp"
-            android:background="#ffffff" />
-
         <RelativeLayout
-            android:id="@+id/txt_name_detail"
+            android:id="@+id/content_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/img_detail"
-            android:layout_marginBottom="10dp"
-            android:textSize="16dp" />
+            android:layout_alignBaseline="@id/content_home"
+            android:background="@drawable/vienwhitenoneboder"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-        <TextView
-            android:id="@+id/txt_name_home_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img_detail"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/txt_name_detail"
-            android:gravity="center"
-            android:text="Nhà trọ 1"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        <TableLayout
-            android:id="@+id/tbl_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_name_home_detail">
-
-            <TableRow android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txt_adress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_name_home_detail"
-                    android:layout_gravity="center"
-                    android:text="Diện tích"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:id="@+id/txt_prices"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_adress"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="25dp"
-                    android:text="Giá phòng"
-                    android:textSize="14dp" />
-
-                <TextView
-                    android:id="@+id/txt_people"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_adress"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:text="Số người"
-                    android:textSize="14dp" />
-            </TableRow>
-
-            <TableRow android:gravity="center">
-
-                <TextView
-                    android:id="@+id/txt_dientich_room"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_adress"
-                    android:layout_marginLeft="-35dp"
-                    android:layout_toRightOf="@+id/txt_adress"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textColor="@color/colorRed"
-                    android:textSize="16dp" />
+            <ImageView
+                android:id="@+id/img_detail"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="100dp"
+                android:layout_marginBottom="20dp"
+                android:background="#ffffff" />
 
 
-                <TextView
-                    android:id="@+id/txt_prices_room"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_dientich_room"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/txt_prices"
-                    android:gravity="center"
-                    android:text="3000000"
-                    android:textColor="@color/colorRed"
-                    android:textSize="16dp" />
+            <TextView
+                android:id="@+id/txt_name_home_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_detail"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:text="Nhà trọ 1"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txt_people_room"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_dientich_room"
-                    android:layout_marginRight="-40dp"
-                    android:layout_toRightOf="@+id/txt_prices"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textColor="@color/colorRed"
-                    android:textSize="16dp" />
-            </TableRow>
+            <TextView
+                android:id="@+id/type_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name_home_detail"
+                android:layout_marginBottom="20dp"
+                android:text="Chung cư -"
+                android:textAllCaps="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name_home_detail"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/type_room"
+                android:text="8 Người" />
+
+            <TableLayout
+                android:id="@+id/tbl_layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/type_room"
+                android:layout_marginBottom="5dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:layout_margin="5dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txt_adress"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_name_home_detail"
+                        android:layout_gravity="center"
+                        android:text="Diện tích"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txt_prices"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_adress"
+                        android:layout_gravity="center"
+                        android:text="Giá phòng"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/txt_people"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/txt_adress"
+                        android:layout_gravity="center"
+                        android:text="Số người"
+                        android:textSize="14dp" />
+                </TableRow>
+
+                <TableRow android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txt_dientich_room"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_adress"
+                        android:layout_toRightOf="@+id/txt_adress"
+                        android:fontFamily="@font/arial"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#FC657C"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
 
-        </TableLayout>
+                    <TextView
+                        android:id="@+id/txt_prices_room"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_dientich_room"
+                        android:layout_toRightOf="@+id/txt_prices"
+                        android:fontFamily="@font/arial"
+                        android:gravity="center"
+                        android:text="3,00 tr/ng"
+                        android:textColor="#FC657C"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
 
-        <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></TableLayout>
+                    <TextView
+                        android:id="@+id/txt_people_room"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_dientich_room"
+                        android:layout_toRightOf="@+id/txt_prices"
+                        android:fontFamily="@font/arial"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#FC657C"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tbl_layout1"
+                android:stretchColumns="*">
+
+                <TableRow>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/wifi" />
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/page_1" />
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/page_1" />
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/page_1" />
+
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/page_1" />
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/page_1" />
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/page_1" />
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/page_1" />
+
+                </TableRow>
+
+
+            </TableLayout>
+
+        </RelativeLayout>
+
 
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tbl_layout"
+            android:layout_below="@id/content_home"
             android:gravity="center">
 
             <TextView
                 android:id="@+id/booking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-30dp"
                 android:background="@drawable/vienbutton"
                 android:padding="10dp"
                 android:text="Đặt phòng" />

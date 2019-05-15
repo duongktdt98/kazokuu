@@ -201,7 +201,6 @@ public class SearchFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Kiểm tra lại mạng", Toast.LENGTH_SHORT).show();
                 progressDialog.setVisibility(View.GONE);
                 transparent_layer.setVisibility(View.GONE);
                 Log.d("Eror", error.getMessage() + "");
@@ -210,39 +209,4 @@ public class SearchFragment extends Fragment {
         });
         requestQueue.add(jsonObjectRequest);
     }
-
-    @Override
-    public void onStart() {
-        Log.d("fragmentA", "fragmentA: onStart");
-        super.onStart();
-    }
-
-    @Override
-    public void onResume() {
-        Log.d("fragmentA", "fragmentA: onResume");
-        super.onResume();
-    }
-
-
-    @Override
-    public void onStop() {
-        Log.d("fragmentA", "fragmentA: onStop");
-        super.onStop();
-    }
-
-
-    @Override
-    public void onDestroyView() {
-        a = 5;
-        Log.d("fragmentA", "fragmentA: onDestroyView");
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onDestroy() {
-        Log.d("fragmentA", "fragmentA: onDestroy");
-        super.onDestroy();
-    }
-
-
 }
