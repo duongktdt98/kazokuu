@@ -11,6 +11,7 @@ public class PreferenceClass {
     public static final  String pre_first = "pre_first";
     public static final  String pre_last = "pre_last";
     public static final  String IS_LOGIN = "isLogIN";
+    public static final  String IS_USER_GUEST = "isUserGuest";
     public static final String USER_ID = "userID";
     public static final String ADMIN_PHONE_NUMBER= "adminPhone";
     public static final String TIMING_ID = "timingID";
@@ -55,8 +56,8 @@ public class PreferenceClass {
     public static final String POST_DIEN_TICH = "homePostDientich";
     public static final String POST_PRICES = "homePostPrice";
     public static final String POST_PRICES_COC = "homePostPriceCoc";
-    public static final String POST_PRICES_DIEN = "homePostPriceCoc";
-    public static final String POST_PRICES_NUOC = "homePostPriceCoc";
+    public static final String POST_PRICES_DIEN = "homePostPriceDien";
+    public static final String POST_PRICES_NUOC = "homePostPriceNuoc";
     public static final String POST_PEOPLE = "homePostPeople";
     public static final String POST_CSVC = "homePostCsvc";
 

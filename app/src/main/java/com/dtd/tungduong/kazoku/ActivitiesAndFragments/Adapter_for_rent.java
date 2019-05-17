@@ -11,14 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dtd.tungduong.kazoku.R;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.dtd.tungduong.kazoku.Constants.Config.imgBaseURL;
 
@@ -55,11 +58,23 @@ public class Adapter_for_rent extends BaseAdapter {
         TextView loaiphong  =(TextView) view.findViewById(R.id.txt_loaiphong);
         TextView price  =(TextView) view.findViewById(R.id.txt_gia);
         TextView creat  =(TextView) view.findViewById(R.id.txt_creat);
+        RelativeLayout trangthai  =(RelativeLayout) view.findViewById(R.id.div_checked);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.image_list_rent);
         txtname.setText(hinhAnhList.get(position).getTen());
         loaiphong.setText(hinhAnhList.get(position).getLoaiphong());
-        price.setText(hinhAnhList.get(position).getGia_tien());
+        String trang_thai =  hinhAnhList.get(position).getTrang_thai();
+
+        if (trang_thai.equals("1")){
+            trangthai.setVisibility(View.VISIBLE);
+        } else {
+            trangthai.setVisibility(View.GONE);
+        }
+
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        String fmtien_phong = String.valueOf(Float.parseFloat(hinhAnhList.get(position).getGia_tien()) / 1000000);
+        price.setText(fmtien_phong+ " Tr");
         creat.setText(hinhAnhList.get(position).getNgaytao());
         Picasso.with(context).load(imgBaseURL +hinhAnhList.get(position).getURL_hinh()).resize(150, 150).into(imageView);
 //        Glide.with(context).load(hinhAnhList.get(position)

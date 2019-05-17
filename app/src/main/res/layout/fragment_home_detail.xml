@@ -3,20 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frame_detail"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
+    android:layout_height="match_parent">
+
     <ScrollView
-        android:layout_marginBottom="65dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="65dp"
         android:fillViewport="true">
 
         <RelativeLayout
             android:id="@+id/frame_layout_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            >
+            android:layout_gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/txt_detail"
                 android:layout_width="match_parent"
@@ -31,12 +31,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/ic_arrow_back_black_24dp" />
+
             <RelativeLayout
-                android:layout_marginTop="40dp"
                 android:id="@+id/content_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/content_home"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/vienwhitenoneboder"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
@@ -71,7 +72,6 @@
                     android:layout_marginBottom="20dp"
                     android:text="Chung cư"
                     android:textAllCaps="true" />
-
 
 
                 <TableLayout
@@ -217,14 +217,14 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:background="@drawable/vienwhitenoneboder"
                 android:id="@+id/tien_ich"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/content_home"
-                android:layout_marginTop="15dp">
+                android:layout_marginTop="15dp"
+                android:background="@drawable/vienwhitenoneboder"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
                     android:id="@+id/txt_tienich"
@@ -233,13 +233,12 @@
                     android:text="TIỆN ÍCH" />
 
                 <GridView
-                    android:scrollbars="none"
                     android:id="@+id/gv_csvc"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txt_tienich"
-                    android:numColumns="4">
-                </GridView>
+                    android:numColumns="4"
+                    android:scrollbars="none"></GridView>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -248,72 +247,79 @@
                     android:layout_marginTop="-10dp"
                     android:layout_marginBottom="3dp"
                     android:background="@drawable/line" />
+
                 <TextView
-                    android:layout_margin="10dp"
                     android:id="@+id/show_more"
-                    android:textSize="18dp"
-                    android:fontFamily="monospace"
-                    android:textColor="#415AD8"
-                    android:layout_below="@id/gv_csvc"
-                    android:layout_centerHorizontal="true"
-                    android:text="Xem thêm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_below="@id/gv_csvc"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:fontFamily="monospace"
+                    android:text="Xem thêm"
+                    android:textColor="#415AD8"
+                    android:textSize="18dp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/div_diachi"
-                android:layout_below="@id/tien_ich"
-                android:background="@drawable/vienwhitenoneboder"
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+                android:layout_below="@id/tien_ich"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/vienwhitenoneboder"
+                android:padding="10dp">
+
                 <TextView
+                    android:layout_marginBottom="5dp"
                     android:id="@+id/div_dia_chi"
-                    android:textAllCaps="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Địa chỉ: "/>
+                    android:text="Địa chỉ: "
+                    android:textAllCaps="true" />
 
                 <ImageView
                     android:id="@+id/phone"
-                    android:layout_below="@id/div_dia_chi"
-                    android:background="@drawable/location"
                     android:layout_width="30dp"
-                    android:layout_height="30dp" />
+                    android:layout_height="30dp"
+                    android:layout_below="@id/div_dia_chi"
+                    android:background="@drawable/location" />
+
                 <TextView
                     android:id="@+id/txt_dia_chi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/div_dia_chi"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
-                    android:textSize="17dp"
-                    android:layout_below="@id/div_dia_chi"
+                    android:layout_toRightOf="@id/phone"
                     android:text="Hà Nội"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/phone"/>
+                    android:textSize="17dp" />
             </RelativeLayout>
+
             <RelativeLayout
+                android:layout_marginBottom="15dp"
                 android:id="@+id/div_mota"
-                android:layout_below="@id/div_diachi"
-                android:background="@drawable/vienwhitenoneboder"
-                android:padding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp">
+                android:layout_below="@id/div_diachi"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/vienwhitenoneboder"
+                android:padding="10dp">
+
                 <TextView
                     android:id="@+id/div_mo_ta"
-                    android:textAllCaps="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mô Tả: "/>
+                    android:text="Mô Tả: "
+                    android:textAllCaps="true" />
 
 
             </RelativeLayout>
 
             <RelativeLayout
-
+                android:layout_marginBottom="10dp"
+                android:id="@+id/div_dat_phong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/div_mota"
@@ -335,6 +341,29 @@
                     android:background="@drawable/vienbutton"
                     android:padding="10dp"
                     android:text="Nhận hỗ trợ" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/div_trang_thai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/div_dat_phong"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_hien_thi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cho Phép hiển thị: " />
+
+                <Switch
+                    android:checked="true"
+                    android:id="@+id/hien_thi"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/txt_hien_thi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
             </RelativeLayout>
         </RelativeLayout>
 

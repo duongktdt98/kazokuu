@@ -1,7 +1,7 @@
 package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 public class HinhAnh {
-    String URL_hinh, Ten, Dia_Chi, Gia_tien, Id, Dien_tich, People, Loaiphong, Ngaytao;
+    String URL_hinh, Ten, Dia_Chi, Gia_tien, Id, Dien_tich, People, Loaiphong, Ngaytao, Trang_thai;
 
     public String getLoaiphong() {
         return Loaiphong;
@@ -19,7 +19,9 @@ public class HinhAnh {
         Ngaytao = ngaytao;
     }
 
-    public HinhAnh(String URL_hinh, String Ten, String Dia_Chi, String Gia_tien, String Id, String dientich, String People, String Loaiphong, String Ngaytao) {
+
+
+    public HinhAnh(String URL_hinh, String Ten, String Dia_Chi, String Gia_tien, String Id, String dientich, String People, String Loaiphong, String Ngaytao, String Trang_thai) {
         this.URL_hinh = URL_hinh;
         this.Ten = Ten;
         this.Dia_Chi = Dia_Chi;
@@ -29,8 +31,16 @@ public class HinhAnh {
         this.People = People;
         this.Loaiphong = Loaiphong;
         this.Ngaytao = Ngaytao;
+        this.Trang_thai = Trang_thai;
     }
 
+    public String getTrang_thai() {
+        return Trang_thai;
+    }
+
+    public void setTrang_thai(String trang_thai) {
+        Trang_thai = trang_thai;
+    }
     public String getPeople() {
         return People;
     }

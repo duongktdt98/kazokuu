@@ -19,8 +19,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.dtd.tungduong.kazoku.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.dtd.tungduong.kazoku.Constants.Config.imgBaseURL;
 
@@ -60,7 +62,11 @@ public class HomeAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.image_home);
         txtname.setText(hinhAnhList.get(position).getTen());
         diachi.setText(hinhAnhList.get(position).getDia_Chi());
-        price.setText(hinhAnhList.get(position).getGia_tien());
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat currencyVN = NumberFormat.getCurrencyInstance(localeVN);
+        String fmtien_phong = currencyVN.format(Integer.parseInt(hinhAnhList.get(position).getGia_tien()));
+        String tienphong = String.valueOf(Float.parseFloat(hinhAnhList.get(position).getGia_tien()) / 1000000);
+        price.setText(tienphong + " Tr");
        Picasso.with(context).load(imgBaseURL +hinhAnhList.get(position).getURL_hinh()).resize(150, 150).into(imageView);
 //        Glide.with(context).load(hinhAnhList.get(position)
 //                .getURL_hinh())

@@ -11,10 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.android.volley.Request;
@@ -37,13 +41,16 @@ import java.util.Locale;
 
 import static com.dtd.tungduong.kazoku.Constants.Config.HOME_DETAIL;
 import static com.dtd.tungduong.kazoku.Constants.Config.LIST_CSVC_DETAIL;
+import static com.dtd.tungduong.kazoku.Constants.Config.SET_TRANG_THAI;
 import static com.dtd.tungduong.kazoku.Constants.Config.imgBaseURL;
 
 public class HomeDetailFragment extends Fragment {
     public SharedPreferences dealsDetailPref;
-    String name, url, dientich, gia_tien, songuoi, id_phong, gia_coc, gia_dien, gia_nuoc;
+    String name, url, dientich, gia_tien, songuoi, id_phong,  id_user, trang_thai;
     TextView name_detail, back_list, tien_coc, booking_now, dien_tich, tien_dien, tien_nuoc, adress, so_nguoi, gia_phong, dia_chi;
+    RelativeLayout div_dat_phong,div_trang_thai;
     ImageView imageView;
+    Switch switch_hien_thi;
     ViewFlipper viewFlipper;
     ArrayList<CSVC> arrayListCsvc;
     AdapterCSVSDetail adapterCSVSDetail;
@@ -60,16 +67,16 @@ public class HomeDetailFragment extends Fragment {
         AnhXa(view);
 
         dealsDetailPref = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
-        name = dealsDetailPref.getString(PreferenceClass.HOME_NAME, "");
+        boolean getUserGuest = dealsDetailPref.getBoolean(PreferenceClass.IS_USER_GUEST, false);
         url = dealsDetailPref.getString(PreferenceClass.HOME_IMG_URL, "");
-        dientich = dealsDetailPref.getString(PreferenceClass.HOME_DIEN_TICH, "");
-        gia_tien = dealsDetailPref.getString(PreferenceClass.HOME_PRICES, "");
-        songuoi = dealsDetailPref.getString(PreferenceClass.HOME_PEOPLE, "");
+        id_user = dealsDetailPref.getString(PreferenceClass.USER_ID, "");
+        if (getUserGuest){
+                div_dat_phong.setVisibility(View.VISIBLE);
+        } else {
+                div_dat_phong.setVisibility(View.GONE);
+        }
 
-        name_detail.setText(name);
-        adress.setText(dientich);
-        so_nguoi.setText(songuoi);
-        Picasso.with(getContext()).load(imgBaseURL + url).resize(350, 300).into(imageView);
+
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +133,9 @@ public class HomeDetailFragment extends Fragment {
         tien_nuoc = (TextView) view.findViewById(R.id.txt_nuoc);
         gia_phong = (TextView) view.findViewById(R.id.tong_tien);
         dia_chi = (TextView) view.findViewById(R.id.txt_dia_chi);
+        div_dat_phong = (RelativeLayout) view.findViewById(R.id.div_dat_phong);
+        div_trang_thai = (RelativeLayout) view.findViewById(R.id.div_trang_thai);
+        switch_hien_thi = (Switch) view.findViewById(R.id.hien_thi);
     }
 
     private void getDetail() {
@@ -163,16 +173,123 @@ public class HomeDetailFragment extends Fragment {
                         String fmtien_coc = currencyVN.format(Integer.parseInt(jsonObject1.optString("tien_coc")));
                         String fmtien_dien = String.valueOf(Float.parseFloat(jsonObject1.optString("gia_dien")) / 1000);
                         String fmtien_nuoc = String.valueOf(Float.parseFloat(jsonObject1.optString("gia_nuoc")) / 1000);
+                         name = jsonObject1.optString("ten_phong");
+                         dientich = jsonObject1.optString("kich_thuoc");
+                         songuoi = jsonObject1.optString("so_nguoi");
                         String ward = jsonObject1.optString("ward_name");
+                         trang_thai = jsonObject1.optString("trang_thai");
                         String province = jsonObject1.optString("province_name");
                         String district = jsonObject1.optString("district_name");
-                        tien_dien.setText(fmtien_dien + " k/th");
-                        tien_nuoc.setText(fmtien_nuoc + " k/th");
+                        String is_userr = jsonObject1.optString("id_user");
+                        tien_dien.setText(fmtien_dien + " k/1KW");
+                        tien_nuoc.setText(fmtien_nuoc + " k/m³");
                         gia_phong.setText(fmtien_phong);
                         tien_coc.setText(fmtien_coc);
                         dia_chi.setText(ward + ", " + district + ", " + province);
 
+                        name_detail.setText(name);
+                        adress.setText(dientich);
+                        so_nguoi.setText(songuoi);
+                        Picasso.with(getContext()).load(imgBaseURL + url).resize(350, 300).into(imageView);
+                        if (trang_thai.equals("1")){
+                            switch_hien_thi.setChecked(true);
+                        }else {
+                            switch_hien_thi.setChecked(false);
+                        }
+                        switch_hien_thi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (isChecked){
+                                    trang_thai = "1";
+                                    RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                                    JSONObject jsonObject = new JSONObject();
+                                    try {
+                                        jsonObject.put("id_phong", Integer.parseInt(id_phong));
+                                        jsonObject.put("trang_thai", Integer.parseInt(trang_thai));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    Log.d("trang_thai", jsonObject.toString());
+                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SET_TRANG_THAI, jsonObject, new Response.Listener<JSONObject>() {
 
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+
+                                            JSONObject jsonResponse = null;
+                                            String strJson = response.toString();
+                                            Log.d("response", response.toString());
+                                            try {
+                                                jsonResponse = new JSONObject(strJson);
+                                                int code_id = Integer.parseInt(jsonResponse.optString("code"));
+                                                Log.d("code_id", code_id + "");
+                                                if (code_id == 200) {
+                                                    JSONObject json = new JSONObject(jsonResponse.toString());
+                                                    Toast.makeText(getContext(), "Bạn cập nhật trạng thái thành công", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.d("Eror", error.getMessage() + "");
+                                            Log.e("Eror", error.toString());
+                                        }
+                                    });
+                                    requestQueue.add(jsonObjectRequest);
+                                } else {
+                                    trang_thai = "0";
+                                    RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                                    JSONObject jsonObject = new JSONObject();
+                                    try {
+                                        jsonObject.put("id_phong", Integer.parseInt(id_phong));
+                                        jsonObject.put("trang_thai", Integer.parseInt(trang_thai));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                    Log.d("trang_thai", jsonObject.toString());
+                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SET_TRANG_THAI, jsonObject, new Response.Listener<JSONObject>() {
+
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+
+                                            JSONObject jsonResponse = null;
+                                            String strJson = response.toString();
+                                            Log.d("response", response.toString());
+                                            try {
+                                                jsonResponse = new JSONObject(strJson);
+                                                int code_id = Integer.parseInt(jsonResponse.optString("code"));
+                                                Log.d("code_id", code_id + "");
+                                                if (code_id == 200) {
+                                                    JSONObject json = new JSONObject(jsonResponse.toString());
+                                                    Toast.makeText(getContext(), "Bạn cập nhật trạng thái thành công", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Log.d("Eror", error.getMessage() + "");
+                                            Log.e("Eror", error.toString());
+                                        }
+                                    });
+                                    requestQueue.add(jsonObjectRequest);
+                                }
+                            }
+                        });
+                        if (!id_user.equals(is_userr)){
+                            div_dat_phong.setVisibility(View.VISIBLE);
+                            div_trang_thai.setVisibility(View.GONE);
+
+                        } else {
+                            div_dat_phong.setVisibility(View.GONE);
+                            div_trang_thai.setVisibility(View.VISIBLE);
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

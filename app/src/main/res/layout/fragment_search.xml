@@ -87,12 +87,13 @@
                     android:text="Hà Nội" />
 
                 <EditText
+                    android:id="@+id/search_home"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="7dp"
                     android:background="@drawable/btn_radius"
                     android:gravity="center"
-                    android:hint="Nhập quận,huyện"
+                    android:hint="Nhập phường, xã"
                     android:imeOptions="actionNext"
                     android:inputType="textCapSentences|textFilter|textNoSuggestions"
                     android:textSize="15dp" />

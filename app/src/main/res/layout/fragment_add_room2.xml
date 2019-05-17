@@ -150,7 +150,7 @@
                         android:layout_marginLeft="-60dp"
                         android:layout_marginTop="15dp"
                         android:layout_toRightOf="@id/edt_price_dien"
-                        android:text="/ Tháng" />
+                        android:text="/ 1 KW" />
 
                 </RelativeLayout>
 
@@ -185,7 +185,7 @@
                         android:layout_marginLeft="-60dp"
                         android:layout_marginTop="15dp"
                         android:layout_toRightOf="@id/edt_price_nuoc"
-                        android:text="/ Tháng" />
+                        android:text="/ m³" />
                 </RelativeLayout>
 
                 <RelativeLayout

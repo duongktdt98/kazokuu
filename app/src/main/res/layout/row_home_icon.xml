@@ -19,7 +19,7 @@
     <TextView
 
         android:textSize="14dp"
-        android:fontFamily="@font/abril_fatface"
+        android:fontFamily="monospace"
         android:id="@+id/txt_name_home"
         android:layout_gravity="center"
         android:layout_width="150dp"
@@ -31,6 +31,7 @@
         android:text="Tittle"
         />
     <TextView
+        android:textColor="#6BCEEC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/diachi"
@@ -41,10 +42,11 @@
         android:layout_marginBottom="20dp"
         />
     <TextView
-        android:layout_marginLeft="7dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2.000.000"
+        android:textColor="#E68B8B"
         android:layout_toRightOf="@id/diachi"
         android:layout_below="@id/txt_name_home"
         android:id="@+id/prices_total"

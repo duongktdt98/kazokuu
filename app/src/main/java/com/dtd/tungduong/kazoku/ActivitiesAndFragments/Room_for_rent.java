@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ public class Room_for_rent extends Fragment {
     ArrayList<HinhAnh> array_for_rent;
     SharedPreferences sharedPreferences;
     Adapter_for_rent adapterHome;
-    RelativeLayout progressDialog,transparent_layer;
+    RelativeLayout progressDialog,transparent_layer,div_checked;
     TextView back_icon;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,7 +48,7 @@ public class Room_for_rent extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_room_for_rent, container, false);
         Anhxa(view);
-
+        sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
         array_for_rent = new ArrayList<HinhAnh>();
         progressDialog.setVisibility(View.VISIBLE);
         transparent_layer.setVisibility(View.VISIBLE);
@@ -62,6 +63,21 @@ public class Room_for_rent extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        lv_for_rent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(PreferenceClass.HOME_ID, array_for_rent.get(position).getId());
+                editor.putBoolean(PreferenceClass.IS_USER_GUEST, false);
+                editor.commit();
+                final FragmentManager fragmentManager = getFragmentManager();
+                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
+                fragmentTransaction.replace(R.id.frame_container, homeDetailFragment);
+                fragmentTransaction.addToBackStack("Add2");
+                fragmentTransaction.commit();
+            }
+        });
         return view;
     }
 
@@ -70,6 +86,7 @@ public class Room_for_rent extends Fragment {
         lv_for_rent = (ListView) view.findViewById(R.id.list_for_rent);
         progressDialog = view.findViewById(R.id.progressDialog);
         transparent_layer = view.findViewById(R.id.transparent_layer);
+        div_checked = view.findViewById(R.id.div_checked);
 
     }
 
@@ -112,10 +129,17 @@ public class Room_for_rent extends Fragment {
                             Home.setURL_hinh(home.optString("ten_anh"));
                             Home.setNgaytao(home.optString("created"));
                             Home.setId(home.optString("id") );
+                            Home.setTrang_thai(home.optString("trang_thai") );
                             array_for_rent.add(Home);
-
+                            String trang_thai = home.optString("trang_thai");
+//                            if (trang_thai.equals("1")){
+//                                div_checked.setVisibility(View.VISIBLE);
+//                            } else {
+//                                div_checked.setVisibility(View.GONE);
+//                            }
                         }
                         if (array_for_rent != null) {
+                            sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
                             adapterHome = new Adapter_for_rent(array_for_rent, getContext());
                             //adapterHome.getView(arrayImage,null);
                             lv_for_rent.setAdapter(adapterHome);

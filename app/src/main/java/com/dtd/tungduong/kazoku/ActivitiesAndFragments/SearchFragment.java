@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -37,6 +40,7 @@ import java.util.ArrayList;
 
 import static android.support.constraint.Constraints.TAG;
 import static com.dtd.tungduong.kazoku.Constants.Config.LIST_HOME;
+import static com.dtd.tungduong.kazoku.Constants.Config.SEARCH_HOME;
 
 public class SearchFragment extends Fragment {
     RelativeLayout progressDialog,transparent_layer;
@@ -46,6 +50,7 @@ public class SearchFragment extends Fragment {
     RadioButton kv_hn, kv_h, kv_hcm;
     public SharedPreferences sharedPreferences;
     GridView gv_nha_tro;
+    EditText search_home;
     ArrayList<HinhAnh> arrayImage;
     HomeAdapter adapterHome;
     int a = 0;
@@ -61,11 +66,29 @@ public class SearchFragment extends Fragment {
 
         progressDialog.setVisibility(View.VISIBLE);
         transparent_layer.setVisibility(View.VISIBLE);
-        arrayImage = new ArrayList<>();
 
+
+
+
+
+        search_home.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String value = search_home.getText().toString();
+                Search(value);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         DataArrayList();
-
-
         gv_nha_tro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -146,25 +169,25 @@ public class SearchFragment extends Fragment {
 
     }
 
-    public void AnhXa(View view) {
-        btn = (TextView) view.findViewById(R.id.btn_search_kv);
-        gv_nha_tro = (GridView) view.findViewById(R.id.gv_nha_tro);
-        ImageView image_home = (ImageView) view.findViewById(R.id.image_home);
-        progressDialog = view.findViewById(R.id.progressDialog);
-        transparent_layer = view.findViewById(R.id.transparent_layer);
-    }
-
-    public void DataArrayList() {
-
+    private void Search(String value) {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, LIST_HOME, null, new Response.Listener<JSONObject>() {
+        arrayImage = new ArrayList<>();
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("key", value);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.d("keysearch", jsonObject.toString());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, SEARCH_HOME, jsonObject, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
 
                 JSONObject jsonResponse = null;
                 String strJson = response.toString();
-                Log.d("response", response.toString());
+                Log.d("search", response.toString());
                 try {
                     jsonResponse = new JSONObject(strJson);
                     int code_id = Integer.parseInt(jsonResponse.optString("code"));
@@ -177,6 +200,72 @@ public class SearchFragment extends Fragment {
                             Log.d("res", home.toString());
                             HinhAnh Home = new HinhAnh();
                             Log.d("ten", home.optString("ten_phong"));
+                            Home.setTen(home.optString("ten_phong"));
+                            Home.setGia_tien(home.optString("gia_phong"));
+                            Home.setDia_Chi(home.optString("ward_name"));
+                            Home.setDien_tich(home.optString("kich_thuoc"));
+                            Home.setURL_hinh(home.optString("ten_anh"));
+                            Home.setPeople(home.optString("so_nguoi"));
+                            Home.setId(home.optString("id") );
+                            arrayImage.add(Home);
+
+                        }
+                        if (arrayImage != null) {
+                            adapterHome = new HomeAdapter(arrayImage, getContext());
+                            //adapterHome.getView(arrayImage,null);
+                            progressDialog.setVisibility(View.GONE);
+                            transparent_layer.setVisibility(View.GONE);
+
+                            adapterHome.notifyDataSetChanged();
+                            gv_nha_tro.invalidate();
+                            gv_nha_tro.setAdapter(new HomeAdapter(arrayImage, getContext()));
+
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.setVisibility(View.GONE);
+                transparent_layer.setVisibility(View.GONE);
+                Log.d("Eror", error.getMessage() + "");
+                Log.e("Eror", error.toString());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void AnhXa(View view) {
+        btn = (TextView) view.findViewById(R.id.btn_search_kv);
+        search_home = (EditText) view.findViewById(R.id.search_home);
+        gv_nha_tro = (GridView) view.findViewById(R.id.gv_nha_tro);
+        ImageView image_home = (ImageView) view.findViewById(R.id.image_home);
+        progressDialog = view.findViewById(R.id.progressDialog);
+        transparent_layer = view.findViewById(R.id.transparent_layer);
+    }
+
+    public void DataArrayList() {
+        arrayImage = new ArrayList<>();
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, LIST_HOME, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                JSONObject jsonResponse = null;
+                String strJson = response.toString();
+                try {
+                    jsonResponse = new JSONObject(strJson);
+                    int code_id = Integer.parseInt(jsonResponse.optString("code"));
+                    if (code_id == 200) {
+                        JSONObject json = new JSONObject(jsonResponse.toString());
+                        JSONArray jsonarray = json.getJSONArray("msg");
+                        for (int i = 0; i < jsonarray.length(); i++) {
+                            JSONObject home = jsonarray.getJSONObject(i);
+                            HinhAnh Home = new HinhAnh();
                             Home.setTen(home.optString("ten_phong"));
                             Home.setGia_tien(home.optString("gia_phong"));
                             Home.setDia_Chi(home.optString("ward_name"));
