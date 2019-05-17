@@ -130,6 +130,7 @@ public class Room_for_rent extends Fragment {
                             Home.setNgaytao(home.optString("created"));
                             Home.setId(home.optString("id") );
                             Home.setTrang_thai(home.optString("trang_thai") );
+                            Home.setKiem_duyet(home.optString("kiem_duyet") );
                             array_for_rent.add(Home);
                             String trang_thai = home.optString("trang_thai");
 //                            if (trang_thai.equals("1")){

@@ -64,8 +64,9 @@ public class Adapter_for_rent extends BaseAdapter {
         txtname.setText(hinhAnhList.get(position).getTen());
         loaiphong.setText(hinhAnhList.get(position).getLoaiphong());
         String trang_thai =  hinhAnhList.get(position).getTrang_thai();
+        String kiem_duyet =  hinhAnhList.get(position).getKiem_duyet();
 
-        if (trang_thai.equals("1")){
+        if (trang_thai.equals("1") && kiem_duyet.equals("")){
             trangthai.setVisibility(View.VISIBLE);
         } else {
             trangthai.setVisibility(View.GONE);
