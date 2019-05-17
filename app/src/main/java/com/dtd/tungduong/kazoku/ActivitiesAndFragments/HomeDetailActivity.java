@@ -2,13 +2,13 @@ package com.dtd.tungduong.kazoku.ActivitiesAndFragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
@@ -39,7 +39,7 @@ import static com.dtd.tungduong.kazoku.Constants.Config.HOME_DETAIL;
 import static com.dtd.tungduong.kazoku.Constants.Config.LIST_CSVC_DETAIL;
 import static com.dtd.tungduong.kazoku.Constants.Config.imgBaseURL;
 
-public class HomeDetailFragment extends Fragment {
+public class HomeDetailActivity extends AppCompatActivity {
     public SharedPreferences dealsDetailPref;
     String name, url, dientich, gia_tien, songuoi, id_phong, gia_coc, gia_dien, gia_nuoc;
     TextView name_detail, back_list, tien_coc, booking_now, dien_tich, tien_dien, tien_nuoc, adress, so_nguoi, gia_phong, dia_chi;
@@ -51,15 +51,12 @@ public class HomeDetailFragment extends Fragment {
     int limit = 4;
     TextView showmore;
     int max = 0;
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home_detail, container, false);
-        AnhXa(view);
-
-        dealsDetailPref = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home_detail);
+        AnhXa();
+        dealsDetailPref = getApplication().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
         name = dealsDetailPref.getString(PreferenceClass.HOME_NAME, "");
         url = dealsDetailPref.getString(PreferenceClass.HOME_IMG_URL, "");
         dientich = dealsDetailPref.getString(PreferenceClass.HOME_DIEN_TICH, "");
@@ -69,7 +66,7 @@ public class HomeDetailFragment extends Fragment {
         name_detail.setText(name);
         adress.setText(dientich);
         so_nguoi.setText(songuoi);
-        Picasso.with(getContext()).load(imgBaseURL + url).resize(350, 300).into(imageView);
+        Picasso.with(this).load(imgBaseURL + url).resize(350, 300).into(imageView);
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -81,57 +78,45 @@ public class HomeDetailFragment extends Fragment {
         back_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final FragmentManager fragmentManager = getFragmentManager();
-                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                SearchFragment searchFragment = new SearchFragment();
-                fragmentTransaction.replace(R.id.frame_container, searchFragment);
-                fragmentTransaction.commit();
+                startActivity(new Intent(getApplication(), MainActivity.class));
             }
         });
 
-        back_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().popBackStack();
-            }
-        });
+
         booking_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final FragmentManager fragmentManager = getFragmentManager();
-                final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Booking_home_Frame booking_home_frame = new Booking_home_Frame();
-                fragmentTransaction.replace(R.id.frame_container, booking_home_frame);
+                fragmentTransaction.replace(R.id.frame_container_detail, booking_home_frame);
                 fragmentTransaction.commit();
             }
         });
         getDetail();
         getDetail_CSVC();
-
-        return view;
     }
-
-    private void AnhXa(View view) {
-        gv_csvc = (GridView) view.findViewById(R.id.gv_csvc);
-        imageView = (ImageView) view.findViewById(R.id.img_detail);
-        name_detail = (TextView) view.findViewById(R.id.txt_name_home_detail);
-        showmore = (TextView) view.findViewById(R.id.show_more);
-        adress = (TextView) view.findViewById(R.id.txt_dientich_room);
-        back_list = (TextView) view.findViewById(R.id.back_list_home);
-        tien_coc = (TextView) view.findViewById(R.id.txt_tien_coc);
-        so_nguoi = (TextView) view.findViewById(R.id.txt_people_room);
-        dien_tich = (TextView) view.findViewById(R.id.txt_dientich_room);
-        booking_now = (TextView) view.findViewById(R.id.booking);
-        tien_dien = (TextView) view.findViewById(R.id.txt_dien);
-        tien_nuoc = (TextView) view.findViewById(R.id.txt_nuoc);
-        gia_phong = (TextView) view.findViewById(R.id.tong_tien);
-        dia_chi = (TextView) view.findViewById(R.id.txt_dia_chi);
+    private void AnhXa() {
+        gv_csvc = (GridView) findViewById(R.id.gv_csvc);
+        imageView = (ImageView) findViewById(R.id.img_detail);
+        name_detail = (TextView) findViewById(R.id.txt_name_home_detail);
+        showmore = (TextView) findViewById(R.id.show_more);
+        adress = (TextView) findViewById(R.id.txt_dientich_room);
+        back_list = (TextView) findViewById(R.id.back_list_home);
+        tien_coc = (TextView) findViewById(R.id.txt_tien_coc);
+        so_nguoi = (TextView) findViewById(R.id.txt_people_room);
+        dien_tich = (TextView) findViewById(R.id.txt_dientich_room);
+        booking_now = (TextView) findViewById(R.id.booking);
+        tien_dien = (TextView) findViewById(R.id.txt_dien);
+        tien_nuoc = (TextView) findViewById(R.id.txt_nuoc);
+        gia_phong = (TextView) findViewById(R.id.tong_tien);
+        dia_chi = (TextView) findViewById(R.id.txt_dia_chi);
     }
 
     private void getDetail() {
-        dealsDetailPref = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+        dealsDetailPref = this.getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
         id_phong = dealsDetailPref.getString(PreferenceClass.HOME_ID, "");
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("id_phong", Integer.parseInt(id_phong));
@@ -192,9 +177,9 @@ public class HomeDetailFragment extends Fragment {
     private void getDetail_CSVC() {
         arrayListCsvc = new ArrayList<>();
         final JSONArray[] jsonarray = new JSONArray[1];
-        dealsDetailPref = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
+        dealsDetailPref = this.getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
         id_phong = dealsDetailPref.getString(PreferenceClass.HOME_ID, "");
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("id_phong", Integer.parseInt(id_phong));
@@ -241,7 +226,7 @@ public class HomeDetailFragment extends Fragment {
                             arrayListCsvc.add(csvc);
                         }
                         if (arrayListCsvc != null) {
-                            adapterCSVSDetail = new AdapterCSVSDetail(getContext(), arrayListCsvc);
+                            adapterCSVSDetail = new AdapterCSVSDetail(getApplication(), arrayListCsvc);
                             gv_csvc.setAdapter(adapterCSVSDetail);
                             setGridViewHeightBasedOnChildren(gv_csvc, 4);
                         }
@@ -308,13 +293,12 @@ public class HomeDetailFragment extends Fragment {
     }
 
     private void DialogImage() {
-        Dialog dialog = new Dialog(getContext());
+        Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.modal_image_detail_home);
         viewFlipper = (ViewFlipper) dialog.findViewById(R.id.view_image_dialog);
         viewFlipper.setFlipInterval(3000);
         viewFlipper.setAutoStart(true);
         dialog.show();
     }
-
 
 }

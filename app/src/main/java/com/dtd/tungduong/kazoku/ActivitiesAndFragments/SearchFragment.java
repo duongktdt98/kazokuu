@@ -91,6 +91,7 @@ public class SearchFragment extends Fragment {
                 final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
                 fragmentTransaction.replace(R.id.frame_container, homeDetailFragment);
+                fragmentTransaction.addToBackStack("Add2");
                 fragmentTransaction.commit();
 
 

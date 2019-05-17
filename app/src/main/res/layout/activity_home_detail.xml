@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frame_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+    android:id="@+id/home_detail"
+    tools:context=".ActivitiesAndFragments.HomeDetailActivity">
+
+    <FrameLayout
+        android:id="@+id/frame_container_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="ScrollView"
+        app:layout_constraintTop_toTopOf="parent" >
     <ScrollView
-        android:layout_marginBottom="65dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -339,6 +346,5 @@
         </RelativeLayout>
 
     </ScrollView>
-
-
-</FrameLayout>
+    </FrameLayout>
+</RelativeLayout>

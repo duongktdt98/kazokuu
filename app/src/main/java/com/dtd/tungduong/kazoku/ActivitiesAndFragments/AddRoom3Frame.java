@@ -23,6 +23,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,7 +69,7 @@ public class AddRoom3Frame extends Fragment {
     GridView grid_csvc;
     CheckBox checkboxname;
     int Request_Code_Image = 123;
-    String realpath = "";
+    String realpath = "", url_img = "";
     ArrayList<CSVC> arrayImage;
     GridCsvcAdapter gridCsvcAdapter;
 
@@ -111,6 +112,8 @@ public class AddRoom3Frame extends Fragment {
                             gridCsvcAdapter = new GridCsvcAdapter(arrayImage, getContext());
                             //adapterHome.getView(arrayImage,null);
                             grid_csvc.setAdapter(gridCsvcAdapter);
+                            setGridViewHeightBasedOnChildren( grid_csvc , 2 );
+
                         }
                     }
                 } catch (JSONException e) {
@@ -139,6 +142,7 @@ public class AddRoom3Frame extends Fragment {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, Request_Code_Image);
+
             }
         });
 
@@ -148,126 +152,127 @@ public class AddRoom3Frame extends Fragment {
                 getFragmentManager().popBackStack();
             }
         });
+
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 File file = new File(realpath);
                 String file_path = file.getAbsolutePath();
-                if (file_path != null || file_path != "") {
-                    String[] mangtenfile = file_path.split("\\.");
-                    file_path = mangtenfile[0] + System.currentTimeMillis() + "." + mangtenfile[1];
-                    String name = file.getName();
-                    Log.d("ten", name);
-                    Log.d("Duong dan", mangtenfile.toString());
-                    RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                String[] mangtenfile = file_path.split("\\.");
+                String[] mangten = file.getName().split("\\.");
+                url_img = mangten[0] +System.currentTimeMillis() + "."+ mangten[1];
+                file_path = mangtenfile[0] + System.currentTimeMillis() + "." + mangtenfile[1];
+                String name = file.getName();
+                Log.d("ten", url_img);
+                Log.d("Duong dan", file_path);
+                RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
 
-                    // MultipartBody.Part is used to send also the actual file name
-                    MultipartBody.Part body = MultipartBody.Part.createFormData("uploaded_file", file_path, requestFile);
+                // MultipartBody.Part is used to send also the actual file name
+                MultipartBody.Part body = MultipartBody.Part.createFormData("uploaded_file", file_path, requestFile);
 
 
-                    DataClient dataClient = APIUtils.getData();
+                DataClient dataClient = APIUtils.getData();
 
-                    Call<Object> callback = dataClient.UploadImg(body);
+                Call<Object> callback = dataClient.UploadImg(body);
 
-                    callback.enqueue(new Callback<Object>() {
-                        @Override
-                        public void onResponse(Call<Object> call, Response<Object> response) {
-                            // Không chạy vào đây luôn :(
+                callback.enqueue(new Callback<Object>() {
+                    @Override
+                    public void onResponse(Call<Object> call, Response<Object> response) {
+                        // Không chạy vào đây luôn :(
 
-                            if (response != null) {
+                        if (response != null) {
 
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString(PreferenceClass.POST_IMG_URL, response.body().toString());
-                                editor.commit();
-                                Log.d("CCC", response.body().toString());
-                            }
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString(PreferenceClass.POST_IMG_URL, response.body().toString());
+                            editor.commit();
+                            Log.d("CCC", response.body().toString());
                         }
+                    }
 
-                        @Override
-                        public void onFailure(Call<Object> call, Throwable t) {
-                            Log.d("BBB", t.toString());
-                        }
-                    });
+                    @Override
+                    public void onFailure(Call<Object> call, Throwable t) {
+                        Log.d("BBB", t.toString());
+                    }
+                });
+
+
                     sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
-                    String chuoi_csvc = sharedPreferences.getString(PreferenceClass.POST_CSVC,"");
-                    Log.d("BBB", chuoi_csvc);
-                    JSONObject jsonObject2 = new JSONObject();
-                    String[] output = chuoi_csvc.split("\\s");
-                    for (int j = 0; j< output.length; j++){
-                        String dem = String.valueOf(j);
-                        Log.d("CCC", output[j]);
-                        try {
-                            jsonObject2.put( dem, output[j]);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-                    Calendar calendar = Calendar.getInstance();
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String ngay_ht = simpleDateFormat.format(calendar.getTime());
-                    JSONObject jsonObject = new JSONObject();
-                    try {
-                        jsonObject.put("id_user", sharedPreferences.getString(PreferenceClass.USER_ID, ""));
-                        jsonObject.put("home_name", sharedPreferences.getString(PreferenceClass.POST_NAME, ""));
-                        jsonObject.put("creats", ngay_ht);
-                        jsonObject.put("province", sharedPreferences.getString(PreferenceClass.POST_PROVINCE, ""));
-                        jsonObject.put("district", sharedPreferences.getString(PreferenceClass.POST_DISTRICT, ""));
-                        jsonObject.put("ward", sharedPreferences.getString(PreferenceClass.POST_WARD, ""));
-                        jsonObject.put("so_nha", sharedPreferences.getString(PreferenceClass.POST_NUMBERHOME, ""));
-                        jsonObject.put("price_home_total", sharedPreferences.getString(PreferenceClass.POST_PRICES, ""));
-                        jsonObject.put("price_nuoc", sharedPreferences.getString(PreferenceClass.POST_PRICES_NUOC, ""));
-                        jsonObject.put("price_coc", sharedPreferences.getString(PreferenceClass.POST_PRICES_COC, ""));
-                        jsonObject.put("price_dien", sharedPreferences.getString(PreferenceClass.POST_PRICES_DIEN, ""));
-                        jsonObject.put("dien_tich", sharedPreferences.getString(PreferenceClass.POST_DIEN_TICH, ""));
-                        jsonObject.put("max_people", sharedPreferences.getString(PreferenceClass.POST_PEOPLE, ""));
-                        jsonObject.put("url_anh", sharedPreferences.getString(PreferenceClass.POST_IMG_URL, ""));
-                        jsonObject.put("type_home", sharedPreferences.getString(PreferenceClass.POST_TYPE_HOME, ""));
-                        jsonObject.put("id_csvc", jsonObject2);
-                        jsonObject.put("kiem_duyet", 0);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Log.d("json???", jsonObject.toString());
-
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, POST_HOME, jsonObject, new com.android.volley.Response.Listener<JSONObject>() {
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-
-                            JSONObject jsonResponse = null;
-                            String strJson = response.toString();
-                            Log.d("response", response.toString());
+                    String url=sharedPreferences.getString(PreferenceClass.POST_IMG_URL, "");
+                    if (url != ""||url!=null){
+                        String chuoi_csvc = sharedPreferences.getString(PreferenceClass.POST_CSVC,"");
+                        Log.d("BBB", chuoi_csvc);
+                        JSONObject jsonObject2 = new JSONObject();
+                        String[] output = chuoi_csvc.split("\\s");
+                        for (int j = 0; j< output.length; j++){
+                            String dem = String.valueOf(j);
+                            Log.d("CCC", output[j]);
                             try {
-                                jsonResponse = new JSONObject(strJson);
-                                int code_id = Integer.parseInt(jsonResponse.optString("code"));
-                                Log.d("code_id", code_id + "");
-                                if (code_id == 200) {
-                                    Toast.makeText(getContext(), "Bạn đã đăng phòng thành công. Xin chờ xét duyệt !", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getContext(), MainActivity.class));
-                                    getActivity().finish();
-                                }
+                                jsonObject2.put( dem, output[j]);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                    }, new com.android.volley.Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getContext(), "Kiểm tra lại mạng", Toast.LENGTH_SHORT).show();
-                            Log.d("Eror", error.getMessage() + "");
-                            Log.e("Eror", error.toString());
+
+                        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                        Calendar calendar = Calendar.getInstance();
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        String ngay_ht = simpleDateFormat.format(calendar.getTime());
+                        JSONObject jsonObject = new JSONObject();
+                        try {
+                            jsonObject.put("id_user", sharedPreferences.getString(PreferenceClass.USER_ID, ""));
+                            jsonObject.put("home_name", sharedPreferences.getString(PreferenceClass.POST_NAME, ""));
+                            jsonObject.put("creats", ngay_ht);
+                            jsonObject.put("province", sharedPreferences.getString(PreferenceClass.POST_PROVINCE, ""));
+                            jsonObject.put("district", sharedPreferences.getString(PreferenceClass.POST_DISTRICT, ""));
+                            jsonObject.put("ward", sharedPreferences.getString(PreferenceClass.POST_WARD, ""));
+                            jsonObject.put("so_nha", sharedPreferences.getString(PreferenceClass.POST_NUMBERHOME, ""));
+                            jsonObject.put("price_home_total", sharedPreferences.getString(PreferenceClass.POST_PRICES, ""));
+                            jsonObject.put("price_nuoc", sharedPreferences.getString(PreferenceClass.POST_PRICES_NUOC, ""));
+                            jsonObject.put("price_coc", sharedPreferences.getString(PreferenceClass.POST_PRICES_COC, ""));
+                            jsonObject.put("price_dien", sharedPreferences.getString(PreferenceClass.POST_PRICES_DIEN, ""));
+                            jsonObject.put("dien_tich", sharedPreferences.getString(PreferenceClass.POST_DIEN_TICH, ""));
+                            jsonObject.put("max_people", sharedPreferences.getString(PreferenceClass.POST_PEOPLE, ""));
+                            jsonObject.put("url_anh", url_img);
+                            jsonObject.put("type_home", sharedPreferences.getString(PreferenceClass.POST_TYPE_HOME, ""));
+                            jsonObject.put("id_csvc", jsonObject2);
+                            jsonObject.put("kiem_duyet", 0);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                    requestQueue.add(jsonObjectRequest);
+                        Log.d("json???", jsonObject.toString());
 
+                        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, POST_HOME, jsonObject, new com.android.volley.Response.Listener<JSONObject>() {
 
+                            @Override
+                            public void onResponse(JSONObject response) {
 
-                } else {
-                    Toast.makeText(getContext(), "Mời bạn chọn ảnh!", Toast.LENGTH_SHORT).show();
-                }
+                                JSONObject jsonResponse = null;
+                                String strJson = response.toString();
+                                Log.d("response", response.toString());
+                                try {
+                                    jsonResponse = new JSONObject(strJson);
+                                    int code_id = Integer.parseInt(jsonResponse.optString("code"));
+                                    Log.d("code_id", code_id + "");
+                                    if (code_id == 200) {
+                                        Toast.makeText(getContext(), "Bạn đã đăng phòng thành công. Xin chờ xét duyệt !", Toast.LENGTH_LONG).show();
+                                        startActivity(new Intent(getContext(), MainActivity.class));
+                                        getActivity().finish();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, new com.android.volley.Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getContext(), "Kiểm tra lại mạng", Toast.LENGTH_SHORT).show();
+                                Log.d("Eror", error.getMessage() + "");
+                                Log.e("Eror", error.toString());
+                            }
+                        });
+                        requestQueue.add(jsonObjectRequest);
+                    }
+
 
             }
         });
@@ -326,5 +331,32 @@ public class AddRoom3Frame extends Fragment {
         return path;
     }
 
+    public void setGridViewHeightBasedOnChildren(GridView gridView, int columns) {
+        ListAdapter listAdapter = gridView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        int items = listAdapter.getCount();
+        int rows = 0;
+
+        View listItem = listAdapter.getView(0, null, gridView);
+        listItem.measure(0, 0);
+        totalHeight = listItem.getMeasuredHeight();
+
+        float x = 1;
+        if( items > columns ){
+            x = items/columns;
+            rows = (int) (x + 1);
+            totalHeight *= rows;
+        }
+
+        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        params.height = totalHeight;
+        gridView.setLayoutParams(params);
+
+    }
 
 }
