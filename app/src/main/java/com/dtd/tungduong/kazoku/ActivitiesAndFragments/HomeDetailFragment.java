@@ -190,7 +190,7 @@ public class HomeDetailFragment extends Fragment {
                         dia_chi.setText(ward + ", " + district + ", " + province);
 
                         name_detail.setText(name);
-                        adress.setText(dientich);
+                        adress.setText(dientich + "m³");
                         so_nguoi.setText(songuoi);
                         Picasso.with(getContext()).load(imgBaseURL + url).resize(350, 300).into(imageView);
                         if (trang_thai.equals("1")){

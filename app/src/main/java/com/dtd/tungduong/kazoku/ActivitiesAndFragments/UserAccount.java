@@ -230,7 +230,7 @@ public class UserAccount extends Fragment {
 //                        editor.putString(PreferenceClass.pre_last, "");
 //                        editor.putString(PreferenceClass.pre_contact, "");
 //                        editor.putString(PreferenceClass.pre_user_id, "");
-//                        editor.putString(PreferenceClass.ADMIN_USER_ID, "");
+                        editor.putString(PreferenceClass.USER_ID, "");
                         editor.putBoolean(PreferenceClass.IS_LOGIN, false);
                         editor.commit();
 

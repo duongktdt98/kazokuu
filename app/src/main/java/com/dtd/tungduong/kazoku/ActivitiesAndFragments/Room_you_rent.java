@@ -33,6 +33,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import static com.dtd.tungduong.kazoku.Constants.Config.LIST_FOR_RENT;
+import static com.dtd.tungduong.kazoku.Constants.Config.LIST_YOU_RENT;
 
 
 public class Room_you_rent extends Fragment {
@@ -104,7 +105,7 @@ public class Room_you_rent extends Fragment {
         }
         Log.d("XCV", jsonObject.toString());
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, LIST_FOR_RENT, jsonObject, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, LIST_YOU_RENT, jsonObject, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {

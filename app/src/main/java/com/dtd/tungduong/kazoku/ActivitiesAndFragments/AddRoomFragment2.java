@@ -95,7 +95,6 @@ public class AddRoomFragment2 extends Fragment {
             }
         });
         sharedPreferences = getContext().getSharedPreferences(PreferenceClass.user, Context.MODE_PRIVATE);
-        Toast.makeText(getContext(), sharedPreferences.getString(PreferenceClass.POST_DISTRICT, ""), Toast.LENGTH_SHORT).show();
         return view;
     }
 

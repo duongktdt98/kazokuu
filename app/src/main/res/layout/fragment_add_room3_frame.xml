@@ -95,7 +95,7 @@
                 android:background="@drawable/vienbutton"
                 android:gravity="center"
                 android:padding="20dp"
-                android:text="Gửi ảnh"
+                android:text="Hoàn tất đặt phòng"
                 android:textSize="20dp" />
         </RelativeLayout>
     </RelativeLayout>
