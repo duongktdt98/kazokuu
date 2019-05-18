@@ -144,6 +144,8 @@ public class LoginFragment extends Fragment {
                         editor.putString(USER_ID, resultObj.optString("id"));
                         editor.putString("matkhau", username);
                         editor.putString("hoten", resultObj.optString("hoten"));
+                        editor.putString("coin", resultObj.optString("coin"));
+                        Log.d("coin", resultObj.optString("coin"));
                         editor.putBoolean(PreferenceClass.IS_LOGIN, true);
                         editor.commit();
                         startActivity(new Intent(getContext(), MainActivity.class));

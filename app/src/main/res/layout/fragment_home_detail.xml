@@ -312,9 +312,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mô Tả: "
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:layout_marginBottom="10dp"/>
 
-
+                <TextView
+                    android:id="@+id/txt_mo_ta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/div_mo_ta"
+                    android:text="Phòng không có mô tả nào"/>
             </RelativeLayout>
 
             <RelativeLayout

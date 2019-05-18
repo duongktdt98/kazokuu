@@ -22,7 +22,7 @@ public class AddRoomFragment2 extends Fragment {
     TextView btn_back, add_room3;
     RadioGroup radioGroup;
     SharedPreferences sharedPreferences;
-    EditText edt_price_room, edt_price_coc, edt_price_dien, edt_price_nuoc, edt_dien_dich, edt_max_people;
+    EditText edt_price_room, edt_price_coc, edt_price_dien, edt_price_nuoc, edt_dien_dich, edt_max_people, edt_mo_ta;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +83,7 @@ public class AddRoomFragment2 extends Fragment {
                     editor.putString(PreferenceClass.POST_PRICES_NUOC, edt_price_nuoc.getText().toString());
                     editor.putString(PreferenceClass.POST_DIEN_TICH, edt_dien_dich.getText().toString());
                     editor.putString(PreferenceClass.POST_PEOPLE, edt_max_people.getText().toString());
+                    editor.putString(PreferenceClass.POST_MOTA, edt_mo_ta.getText().toString());
                     editor.commit();
                     final FragmentManager fragmentManager = getFragmentManager();
                     final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -107,6 +108,7 @@ public class AddRoomFragment2 extends Fragment {
         edt_price_dien = (EditText) view.findViewById(R.id.edt_price_dien);
         edt_price_nuoc = (EditText) view.findViewById(R.id.edt_price_nuoc);
         edt_max_people = (EditText) view.findViewById(R.id.edt_max_people);
+        edt_mo_ta = (EditText) view.findViewById(R.id.edt_mo_ta);
         radioGroup = (RadioGroup) view.findViewById(R.id.rd_loaiphong);
 
     }

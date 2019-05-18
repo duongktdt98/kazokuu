@@ -71,6 +71,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:hint="Có thể để trống"
                         android:gravity="center"
                         android:id="@+id/edt_name_room"
                         android:layout_width="fill_parent"
@@ -189,6 +190,7 @@
                         android:textStyle="bold" />
 
                     <EditText
+                        android:hint="Không được để trống"
                         android:gravity="center"
                         android:id="@+id/edt_so_nha"
                         android:layout_width="fill_parent"

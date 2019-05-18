@@ -48,6 +48,7 @@ public class PreferenceClass {
     public static final String HOME_PEOPLE = "homePeople";
 
     public static final String POST_NAME = "homePostName";
+    public static final String CHECK_NAME = "check";
     public static final String POST_IMG_URL = "homePostUrl";
     public static final String POST_NUMBERHOME = "homePostNumber";
     public static final String POST_PROVINCE = "homePostProvince";
@@ -59,6 +60,7 @@ public class PreferenceClass {
     public static final String POST_PRICES_DIEN = "homePostPriceDien";
     public static final String POST_PRICES_NUOC = "homePostPriceNuoc";
     public static final String POST_PEOPLE = "homePostPeople";
+    public static final String POST_MOTA = "homePostMota";
     public static final String POST_CSVC = "homePostCsvc";
 
     public static final String POST_TYPE_HOME = "homePostType";

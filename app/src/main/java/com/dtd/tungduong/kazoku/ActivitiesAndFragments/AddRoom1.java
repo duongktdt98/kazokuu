@@ -41,7 +41,7 @@ public class AddRoom1 extends Fragment {
     SharedPreferences sharedPreferences;
     TextView txt_add_room2;
     Spinner spinnerProvince, spinnerDistrict, spinnerWard;
-    String city, ProvinceId;
+    String District, Province, Ward;
     EditText edt_name_room, edt_so_nha;
     ArrayList<Dia_chi> arrayProvince, arrayDistrict, arrayWard;
     ProvinceAdapter provinceAdapter;
@@ -65,13 +65,18 @@ public class AddRoom1 extends Fragment {
         txt_add_room2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edt_name_room.getText().length() == 0) {
-                    Toast.makeText(getContext(), "Vui lòng nhập tên phòng!", Toast.LENGTH_SHORT).show();
-                } else if (edt_so_nha.getText().length() == 0) {
+                 if (edt_so_nha.getText().length() == 0) {
                     Toast.makeText(getContext(), "Vui lòng nhập tên đường hoặc số nhà !", Toast.LENGTH_SHORT).show();
                 } else {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString(PreferenceClass.POST_NAME, edt_name_room.getText().toString());
+                    if (edt_name_room.getText().length() == 0){
+                        String ten_phong = " " + Ward + " " + District + " " + Province;
+                        editor.putString(PreferenceClass.POST_NAME, ten_phong);
+                        editor.putBoolean(PreferenceClass.CHECK_NAME, true);
+                    } else{
+                        editor.putString(PreferenceClass.POST_NAME, edt_name_room.getText().toString());
+                    }
+
                     editor.putString(PreferenceClass.POST_NUMBERHOME, edt_so_nha.getText().toString());
                     editor.commit();
                     final FragmentManager fragmentManager = getFragmentManager();
@@ -125,6 +130,7 @@ public class AddRoom1 extends Fragment {
                             spinnerProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    Province = arrayProvince.get(position).getProvince();
                                     editor.putString(PreferenceClass.POST_PROVINCE, arrayProvince.get(position).getId_Province());
                                     editor.commit();
                                     get_District(arrayProvince.get(position).getId_Province());
@@ -195,6 +201,7 @@ public class AddRoom1 extends Fragment {
                             spinnerDistrict.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    District = arrayDistrict.get(position).getDistrict();
                                     editor.putString(PreferenceClass.POST_DISTRICT, arrayDistrict.get(position).getId_District());
                                     editor.commit();
                                     get_Ward(arrayDistrict.get(position).getId_District());
@@ -265,6 +272,7 @@ public class AddRoom1 extends Fragment {
                             spinnerWard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    Ward = arrayWard.get(position).getWard();
                                     editor.putString(PreferenceClass.POST_WARD, arrayWard.get(position).getId_Ward());
                                     editor.commit();
                                 }

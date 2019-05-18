@@ -47,7 +47,7 @@ import static com.dtd.tungduong.kazoku.Constants.Config.imgBaseURL;
 public class HomeDetailFragment extends Fragment {
     public SharedPreferences dealsDetailPref;
     String name, url, dientich, gia_tien, songuoi, id_phong,  id_user, trang_thai;
-    TextView name_detail, back_list, tien_coc, booking_now, dien_tich, tien_dien, tien_nuoc, adress, so_nguoi, gia_phong, dia_chi;
+    TextView name_detail, back_list,mo_ta, tien_coc, booking_now, dien_tich, tien_dien, tien_nuoc, adress, so_nguoi, gia_phong, dia_chi;
     RelativeLayout div_dat_phong,div_trang_thai;
     ImageView imageView;
     Switch switch_hien_thi;
@@ -96,12 +96,7 @@ public class HomeDetailFragment extends Fragment {
             }
         });
 
-        back_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().popBackStack();
-            }
-        });
+
         booking_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +128,7 @@ public class HomeDetailFragment extends Fragment {
         tien_nuoc = (TextView) view.findViewById(R.id.txt_nuoc);
         gia_phong = (TextView) view.findViewById(R.id.tong_tien);
         dia_chi = (TextView) view.findViewById(R.id.txt_dia_chi);
+        mo_ta = (TextView) view.findViewById(R.id.txt_mo_ta);
         div_dat_phong = (RelativeLayout) view.findViewById(R.id.div_dat_phong);
         div_trang_thai = (RelativeLayout) view.findViewById(R.id.div_trang_thai);
         switch_hien_thi = (Switch) view.findViewById(R.id.hien_thi);
@@ -181,10 +177,16 @@ public class HomeDetailFragment extends Fragment {
                         String province = jsonObject1.optString("province_name");
                         String district = jsonObject1.optString("district_name");
                         String is_userr = jsonObject1.optString("id_user");
+                        String mota = jsonObject1.optString("mota");
                         tien_dien.setText(fmtien_dien + " k/1KW");
                         tien_nuoc.setText(fmtien_nuoc + " k/m³");
                         gia_phong.setText(fmtien_phong);
                         tien_coc.setText(fmtien_coc);
+                        if (mota.equals("") || mota.equals(null)){
+                            mo_ta.setText("Phòng hiện không có mô tả nào !");
+                        } else {
+                            mo_ta.setText(mota);
+                        }
                         dia_chi.setText(ward + ", " + district + ", " + province);
 
                         name_detail.setText(name);
